@@ -33,7 +33,6 @@ export function ContactSection() {
             x.com/toovinod09
           </a>
         </p>
-        <p className="text-[#666]">Bengaluru, India</p>
       </div>
     </section>
   );

@@ -1,4 +1,11 @@
 import Link from "next/link";
+import { Press_Start_2P } from "next/font/google";
+
+const pixel = Press_Start_2P({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-pixel",
+});
 
 interface NavProps {
   active: "home" | "writings";
@@ -6,9 +13,9 @@ interface NavProps {
 
 export function Nav({ active }: NavProps) {
   return (
-    <div className="mb-10">
-      <Link href="/" className="block no-underline mb-6">
-        <h1 className="text-[22px] font-semibold tracking-tight text-[#1a1a1a]">
+    <div className={`mb-10 ${pixel.variable}`}>
+      <Link href="/" className="block no-underline mb-6 group">
+        <h1 className="font-(--font-pixel) text-[18px] leading-tight text-[#1a1a1a] hover:text-[#666] transition-colors duration-300">
           Vinod Biradar
         </h1>
       </Link>

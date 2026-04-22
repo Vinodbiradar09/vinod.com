@@ -14,7 +14,7 @@ export function WritingRow({ writing }: WritingRowProps) {
       >
         {writing.title}
       </Link>
-      <span className="text-[12px] text-[#bbb] tabular-nums shrink-0 font-sans">
+      <span className="text-[12px] text-mist-700 tabular-nums shrink-0 font-sans">
         {writing.date}
       </span>
     </div>

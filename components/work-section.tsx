@@ -31,8 +31,8 @@ export function WorkSection() {
             >
               {project.name}
             </a>
-            <span className="text-[#ccc]">/</span>
-            <span className="text-[#666]">{project.description}</span>
+            <span className="text-mist-700">/</span>
+            <span className="text-zinc-800">{project.description}</span>
           </div>
         ))}
       </div>

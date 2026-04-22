@@ -21,7 +21,7 @@ export function WritingsPreview() {
           <div className="pt-3">
             <Link
               href="/writings"
-              className="text-[13px] text-[#999] no-underline hover:text-[#1a1a1a] transition-colors font-sans"
+              className="text-[13px] text-olive-800 no-underline hover:text-[#1a1a1a] transition-colors font-sans"
             >
               View all →
             </Link>

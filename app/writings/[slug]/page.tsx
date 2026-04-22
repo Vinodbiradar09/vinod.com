@@ -41,7 +41,7 @@ export default async function WritingPage({ params }: PageProps) {
         <div className="mb-10">
           <Link
             href="/writings"
-            className="text-[13px] text-[#999] no-underline hover:text-[#1a1a1a] transition-colors font-sans"
+            className="text-[13px] text-neutral-700 no-underline hover:text-[#1a1a1a] transition-colors font-sans"
           >
             ← Writings
           </Link>
@@ -53,7 +53,7 @@ export default async function WritingPage({ params }: PageProps) {
           <h1 className="text-[22px] font-semibold leading-snug tracking-tight text-[#1a1a1a] mb-4">
             {writing.title}
           </h1>
-          <div className="flex items-center gap-4 text-[13px] text-[#aaa] font-sans">
+          <div className="flex items-center gap-4 text-[13px] text-neutral-700 font-sans">
             <span>{writing.date}</span>
             <span>·</span>
             <span>{writing.readTime}</span>
@@ -67,7 +67,7 @@ export default async function WritingPage({ params }: PageProps) {
           <ProseContent content={writing.content} />
         </article>
         <hr className="border-none border-t border-[#e8e4de] mt-12 mb-8" />
-        <footer className="flex items-center justify-between text-[13px] text-[#aaa] font-sans">
+        <footer className="flex items-center justify-between text-[13px] text-neutral-700 font-sans">
           <Link
             href="/writings"
             className="no-underline hover:text-[#1a1a1a] transition-colors"

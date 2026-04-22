@@ -1,5 +1,7 @@
 import { getAllWritingIds, getWritingById } from "@/lib/writings";
 import { ProseContent } from "@/components/prose-content";
+import { GlassNav } from "@/components/glass-nav";
+import { FadeIn } from "@/components/fade-in";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -29,54 +31,57 @@ export default async function WritingPage({ params }: PageProps) {
   const { slug } = await params;
   const writing = getWritingById(slug);
 
-  if (!writing) {
-    notFound();
-  }
+  if (!writing) notFound();
 
   return (
     <main className="max-w-155 mx-auto px-6 py-16 w-full">
-      <div className="mb-10">
-        <Link
-          href="/writings"
-          className="text-[13px] text-[#999] no-underline hover:text-[#1a1a1a] transition-colors font-sans"
-        >
-          ← Writings
-        </Link>
-      </div>
+      <GlassNav active="writings" />
 
-      <header className="mb-10">
-        <h1 className="text-[22px] font-semibold leading-snug tracking-tight text-[#1a1a1a] mb-4">
-          {writing.title}
-        </h1>
-        <div className="flex items-center gap-4 text-[13px] text-[#aaa] font-sans">
-          <span>{writing.date}</span>
-          <span>·</span>
-          <span>{writing.readTime}</span>
+      <FadeIn delay={0}>
+        <div className="mb-10">
+          <Link
+            href="/writings"
+            className="text-[13px] text-[#999] no-underline hover:text-[#1a1a1a] transition-colors font-sans"
+          >
+            ← Writings
+          </Link>
         </div>
-      </header>
+      </FadeIn>
 
-      <hr className="border-none border-t border-[#e8e4de] mb-10" />
+      <FadeIn delay={60}>
+        <header className="mb-10">
+          <h1 className="text-[22px] font-semibold leading-snug tracking-tight text-[#1a1a1a] mb-4">
+            {writing.title}
+          </h1>
+          <div className="flex items-center gap-4 text-[13px] text-[#aaa] font-sans">
+            <span>{writing.date}</span>
+            <span>·</span>
+            <span>{writing.readTime}</span>
+          </div>
+        </header>
+      </FadeIn>
 
-      <article>
-        <ProseContent content={writing.content} />
-      </article>
-
-      <hr className="border-none border-t border-[#e8e4de] mt-12 mb-8" />
-
-      <footer className="flex items-center justify-between text-[13px] text-[#aaa] font-sans">
-        <Link
-          href="/writings"
-          className="no-underline hover:text-[#1a1a1a] transition-colors"
-        >
-          ← All writings
-        </Link>
-        <Link
-          href="/"
-          className="no-underline hover:text-[#1a1a1a] transition-colors"
-        >
-          Vinod Biradar
-        </Link>
-      </footer>
+      <FadeIn delay={120}>
+        <hr className="border-none border-t border-[#e8e4de] mb-10" />
+        <article>
+          <ProseContent content={writing.content} />
+        </article>
+        <hr className="border-none border-t border-[#e8e4de] mt-12 mb-8" />
+        <footer className="flex items-center justify-between text-[13px] text-[#aaa] font-sans">
+          <Link
+            href="/writings"
+            className="no-underline hover:text-[#1a1a1a] transition-colors"
+          >
+            ← All writings
+          </Link>
+          <Link
+            href="/"
+            className="no-underline hover:text-[#1a1a1a] transition-colors"
+          >
+            Vinod Biradar
+          </Link>
+        </footer>
+      </FadeIn>
     </main>
   );
 }

@@ -1,3 +1,5 @@
+import { Separator } from "@/components/ui/separator";
+
 export function SectionDivider() {
-  return <hr className="my-8 border-none border-t border-[#e8e4de]" />;
+  return <Separator className="my-8 bg-border" />;
 }

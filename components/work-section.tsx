@@ -27,12 +27,12 @@ export function WorkSection() {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-[#1a1a1a] no-underline hover:underline underline-offset-[3px]"
+              className="font-medium text-[#e8e5df] no-underline hover:underline underline-offset-[3px]"
             >
               {project.name}
             </a>
-            <span className="text-mist-700">/</span>
-            <span className="text-zinc-800">{project.description}</span>
+            <span className="text-[#333]">/</span>
+            <span className="text-[#666]">{project.description}</span>
           </div>
         ))}
       </div>

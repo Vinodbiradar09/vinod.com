@@ -1,11 +1,19 @@
-import { Lora, Geist_Mono } from "next/font/google";
+import { Instrument_Serif, Space_Grotesk, Geist_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const lora = Lora({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-lora",
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -26,43 +34,25 @@ export const metadata: Metadata = {
     title: "Vinod Biradar",
     description:
       "Full-stack developer working across the JavaScript ecosystem.",
-    url: "https://vinodbiradar.dev ",
+    url: "https://vinodbiradar.dev",
     siteName: "Vinod Biradar",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      className={cn("h-full antialiased", lora.variable, geistMono.variable)}
+      className={cn(
+        "h-full antialiased",
+        instrumentSerif.variable,
+        spaceGrotesk.variable,
+        geistMono.variable,
+      )}
     >
-      <body className="min-h-full flex flex-col">
-        <div
-          aria-hidden="true"
-          className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat"
-        />
-
-        <div
-          aria-hidden="true"
-          className="fixed inset-0 -z-10 bg-[#f5f2ee]/40"
-        />
-
-        <div
-          aria-hidden="true"
-          className="fixed inset-0 -z-10 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, transparent 0%, transparent 60%, rgba(0,0,0,0.12) 100%)",
-          }}
-        />
-
-        {children}
-      </body>
+      <body className="min-h-full flex flex-col bg-[#0d0d0d]">{children}</body>
     </html>
   );
 }

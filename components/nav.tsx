@@ -14,18 +14,24 @@ interface NavProps {
 export function Nav({ active }: NavProps) {
   return (
     <div className={`mb-10 ${pixel.variable}`}>
-      <Link href="/" className="block no-underline mb-6 group">
-        <h1 className="font-(--font-pixel) text-[18px] leading-tight text-[#1a1a1a] hover:text-[#666] transition-colors duration-300">
+      <Link href="/" className="block no-underline mb-6">
+        <h1
+          style={{ fontFamily: "var(--font-pixel)" }}
+          className="text-[16px] leading-tight text-[#e8e5df] hover:text-[#888] transition-colors duration-300"
+        >
           Vinod Biradar
         </h1>
       </Link>
-      <nav className="flex gap-5 text-[15px]">
+      <nav
+        className="flex gap-5 text-[15px]"
+        style={{ fontFamily: "var(--font-space-grotesk)" }}
+      >
         <Link
           href="/"
           className={`no-underline transition-colors ${
             active === "home"
-              ? "text-[#1a1a1a] font-medium"
-              : "text-[#999] hover:text-[#1a1a1a]"
+              ? "text-[#e8e5df] font-medium"
+              : "text-[#555] hover:text-[#e8e5df]"
           }`}
         >
           Home
@@ -34,8 +40,8 @@ export function Nav({ active }: NavProps) {
           href="/writings"
           className={`no-underline transition-colors ${
             active === "writings"
-              ? "text-[#1a1a1a] font-medium"
-              : "text-[#999] hover:text-[#1a1a1a]"
+              ? "text-[#e8e5df] font-medium"
+              : "text-[#555] hover:text-[#e8e5df]"
           }`}
         >
           Writings

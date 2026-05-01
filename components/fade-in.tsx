@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 interface FadeInProps {
   children: React.ReactNode;
-  delay?: number; // ms
+  delay?: number;
   className?: string;
 }
 

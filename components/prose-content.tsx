@@ -12,9 +12,8 @@ function escapeHtml(str: string): string {
 
 function renderMarkdown(text: string): string {
   const blocks: string[] = [];
-
-  // First, extract code blocks so we don't mangle their content
   const codeBlocks: string[] = [];
+
   const withPlaceholders = text.replace(
     /```(\w*)\n([\s\S]*?)```/g,
     (_, lang: string, code: string) => {
@@ -26,21 +25,18 @@ function renderMarkdown(text: string): string {
     },
   );
 
-  // Split into double-newline separated paragraphs
   const paragraphs = withPlaceholders.split(/\n{2,}/);
 
   for (const raw of paragraphs) {
     const block = raw.trim();
     if (!block) continue;
 
-    // Restore code blocks
     if (/^%%CODE_BLOCK_\d+%%$/.test(block)) {
       const idx = parseInt(block.match(/\d+/)![0], 10);
       blocks.push(codeBlocks[idx]);
       continue;
     }
 
-    // Headings
     if (block.startsWith("### ")) {
       blocks.push(`<h3>${inlineMarkdown(block.slice(4))}</h3>`);
       continue;
@@ -54,7 +50,6 @@ function renderMarkdown(text: string): string {
       continue;
     }
 
-    // Lists — lines starting with "- " or "N. "
     const lines = block.split("\n");
     const isUnorderedList = lines.every(
       (l) => /^- /.test(l.trim()) || l.trim() === "",
@@ -81,7 +76,6 @@ function renderMarkdown(text: string): string {
       continue;
     }
 
-    // Regular paragraph — join lines
     const joined = lines.join(" ").trim();
     blocks.push(`<p>${inlineMarkdown(joined)}</p>`);
   }
@@ -125,23 +119,31 @@ export function ProseContent({ content }: ProseContentProps) {
         .prose-content p {
           font-size: 15px;
           line-height: 1.85;
-          color: #3a3a3a;
+          color: #a8a49e;
           margin-bottom: 1.3rem;
         }
+        .prose-content h1 {
+          font-family: var(--font-instrument-serif), Georgia, serif;
+          font-size: 22px;
+          font-weight: 600;
+          color: #e8e5df;
+          margin-top: 2.75rem;
+          margin-bottom: 0.75rem;
+        }
         .prose-content h2 {
-          font-family: var(--font-lora), Georgia, serif;
+          font-family: var(--font-instrument-serif), Georgia, serif;
           font-size: 19px;
           font-weight: 600;
-          color: #1a1a1a;
+          color: #e8e5df;
           margin-top: 2.75rem;
           margin-bottom: 0.75rem;
           letter-spacing: -0.015em;
         }
         .prose-content h3 {
-          font-family: var(--font-lora), Georgia, serif;
+          font-family: var(--font-instrument-serif), Georgia, serif;
           font-size: 16px;
           font-weight: 600;
-          color: #1a1a1a;
+          color: #e8e5df;
           margin-top: 2rem;
           margin-bottom: 0.5rem;
         }
@@ -165,14 +167,14 @@ export function ProseContent({ content }: ProseContentProps) {
           content: counter(list-counter) ".";
           position: absolute;
           left: 0;
-          color: #bbb;
+          color: #444;
           font-size: 13px;
           font-family: var(--font-geist-mono), monospace;
         }
         .prose-content ul li {
           font-size: 15px;
           line-height: 1.8;
-          color: #3a3a3a;
+          color: #a8a49e;
           padding-left: 1.25rem;
           position: relative;
           margin-bottom: 0.3rem;
@@ -181,28 +183,28 @@ export function ProseContent({ content }: ProseContentProps) {
           content: "—";
           position: absolute;
           left: 0;
-          color: #ccc;
+          color: #333;
           font-size: 12px;
           top: 1px;
         }
         .prose-content ol li {
           font-size: 15px;
           line-height: 1.8;
-          color: #3a3a3a;
+          color: #a8a49e;
           margin-bottom: 0.3rem;
         }
         .prose-content code {
           font-family: var(--font-geist-mono), 'Fira Code', monospace;
           font-size: 13px;
-          background: #edeae5;
+          background: #1e1e1e;
           padding: 2px 5px;
           border-radius: 3px;
-          color: #2a2a2a;
+          color: #c8c4bc;
         }
         .prose-content pre {
           position: relative;
-          background: #f7f5f2;
-          border: 1px solid #e8e4de;
+          background: #141414;
+          border: 1px solid #242424;
           border-radius: 6px;
           padding: 1.25rem 1.5rem 1.25rem 1.5rem;
           overflow-x: auto;
@@ -213,7 +215,7 @@ export function ProseContent({ content }: ProseContentProps) {
           display: block;
           font-family: var(--font-geist-mono), monospace;
           font-size: 10px;
-          color: #bbb;
+          color: #444;
           text-transform: uppercase;
           letter-spacing: 0.1em;
           margin-bottom: 0.75rem;
@@ -222,12 +224,12 @@ export function ProseContent({ content }: ProseContentProps) {
           background: none;
           padding: 0;
           font-size: 13px;
-          color: #2a2a2a;
+          color: #c8c4bc;
           line-height: 1.75;
         }
         .prose-content strong {
           font-weight: 600;
-          color: #1a1a1a;
+          color: #e8e5df;
         }
         .prose-content em {
           font-style: italic;
@@ -238,7 +240,7 @@ export function ProseContent({ content }: ProseContentProps) {
           right: 12px;
           font-family: var(--font-geist-mono), monospace;
           font-size: 10px;
-          color: #bbb;
+          color: #444;
           background: none;
           border: none;
           cursor: pointer;
@@ -248,7 +250,7 @@ export function ProseContent({ content }: ProseContentProps) {
           transition: color 0.15s;
         }
         .copy-btn:hover {
-          color: #555;
+          color: #aaa;
         }
       `}</style>
       <div

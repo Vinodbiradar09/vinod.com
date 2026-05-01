@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <rect width="32" height="32" rx="7" fill="#1a1a1a"/>
   <text
-    x="17"
-    y="27"
+    x="16"
+    y="24"
     font-family="ui-monospace, 'Fira Code', 'Cascadia Code', monospace"
-    font-size="28"
-    font-weight="300"
+    font-size="20"
+    font-weight="600"
     fill="#f5f2ee"
     text-anchor="middle"
-  >/</text>
+  >VB</text>
 </svg>

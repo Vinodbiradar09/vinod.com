@@ -22,7 +22,7 @@ export function AboutSection() {
         <strong className="text-[#e8e5df] font-semibold">PostgreSQL</strong> on{" "}
         <strong className="text-[#e8e5df] font-semibold">NeonDB</strong> with{" "}
         <strong className="text-[#e8e5df] font-semibold">
-          Prisma , Drizzle
+          Prisma, Drizzle
         </strong>{" "}
         as my ORM. I&apos;ve worked with{" "}
         <strong className="text-[#e8e5df] font-semibold">Redis</strong>,{" "}

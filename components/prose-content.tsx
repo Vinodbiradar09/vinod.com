@@ -123,15 +123,16 @@ export function ProseContent({ content }: ProseContentProps) {
           margin-bottom: 1.3rem;
         }
         .prose-content h1 {
-          font-family: var(--font-instrument-serif), Georgia, serif;
+          font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
           font-size: 22px;
           font-weight: 600;
           color: #e8e5df;
           margin-top: 2.75rem;
           margin-bottom: 0.75rem;
+          letter-spacing: -0.015em;
         }
         .prose-content h2 {
-          font-family: var(--font-instrument-serif), Georgia, serif;
+          font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
           font-size: 19px;
           font-weight: 600;
           color: #e8e5df;
@@ -140,12 +141,13 @@ export function ProseContent({ content }: ProseContentProps) {
           letter-spacing: -0.015em;
         }
         .prose-content h3 {
-          font-family: var(--font-instrument-serif), Georgia, serif;
+          font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
           font-size: 16px;
           font-weight: 600;
           color: #e8e5df;
           margin-top: 2rem;
           margin-bottom: 0.5rem;
+          letter-spacing: -0.015em;
         }
         .prose-content ul {
           list-style: none;

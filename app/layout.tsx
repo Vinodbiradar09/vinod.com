@@ -1,19 +1,19 @@
-import { Instrument_Serif, Space_Grotesk, Geist_Mono } from "next/font/google";
+import { Inter, Instrument_Serif, Geist_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],
   style: ["normal", "italic"],
   variable: "--font-instrument-serif",
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -30,13 +30,6 @@ export const metadata: Metadata = {
   },
   description:
     "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
-  openGraph: {
-    title: "Vinod Biradar",
-    description:
-      "Full-stack developer working across the JavaScript ecosystem.",
-    url: "https://vinodbiradar.dev",
-    siteName: "Vinod Biradar",
-  },
 };
 
 export default function RootLayout({
@@ -47,8 +40,8 @@ export default function RootLayout({
       lang="en"
       className={cn(
         "h-full antialiased",
+        inter.variable,
         instrumentSerif.variable,
-        spaceGrotesk.variable,
         geistMono.variable,
       )}
     >

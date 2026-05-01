@@ -37,31 +37,33 @@ export default async function WritingPage({ params }: PageProps) {
         <div className="mb-10">
           <Link
             href="/writings"
-            className="text-[13px] text-[#555] no-underline hover:text-[#e8e5df] transition-colors font-(--font-space-grotesk)"
+            className="text-[13px] text-[#555] no-underline hover:text-[#e8e5df] transition-colors font-sans"
           >
             ← Writings
           </Link>
         </div>
       </FadeIn>
+
       <FadeIn delay={60}>
         <header className="mb-10">
-          <h1 className="text-[22px] font-semibold leading-snug tracking-tight text-[#e8e5df] mb-4">
+          <h1 className="text-[22px] font-semibold leading-snug tracking-tight text-[#e8e5df] mb-4 font-sans">
             {writing.title}
           </h1>
-          <div className="flex items-center gap-4 text-[13px] text-[#555] font-(--font-space-grotesk)">
+          <div className="flex items-center gap-4 text-[13px] text-[#555] font-sans">
             <span>{writing.date}</span>
             <span>·</span>
             <span>{writing.readTime}</span>
           </div>
         </header>
       </FadeIn>
+
       <FadeIn delay={120}>
         <hr className="border-none border-t border-[#242424] mb-10" />
         <article>
           <ProseContent content={writing.content} />
         </article>
         <hr className="border-none border-t border-[#242424] mt-12 mb-8" />
-        <footer className="flex items-center justify-between text-[13px] text-[#555] font-(--font-space-grotesk)">
+        <footer className="flex items-center justify-between text-[13px] text-[#555] font-sans">
           <Link
             href="/writings"
             className="no-underline hover:text-[#e8e5df] transition-colors"

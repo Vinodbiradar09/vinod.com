@@ -8,7 +8,7 @@ const pixel = Press_Start_2P({
 });
 
 interface NavProps {
-  active: "home" | "writings";
+  active: "home" | "writings" | "people";
 }
 
 export function Nav({ active }: NavProps) {
@@ -45,6 +45,16 @@ export function Nav({ active }: NavProps) {
           }`}
         >
           Writings
+        </Link>
+        <Link
+          href="/people"
+          className={`no-underline transition-colors ${
+            active === "people"
+              ? "text-[#e8e5df] font-medium"
+              : "text-[#555] hover:text-[#e8e5df]"
+          }`}
+        >
+          People
         </Link>
       </nav>
     </div>

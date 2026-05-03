@@ -10,6 +10,11 @@ export const metadata: Metadata = {
 
 const people = [
   {
+    name: "Hitesh Choudhary",
+    handle: "@Hiteshdotcom",
+    url: "https://x.com/Hiteshdotcom",
+  },
+  {
     name: "Low Level TV",
     handle: "@LowLevelTweets",
     url: "https://x.com/LowLevelTweets",
@@ -20,9 +25,19 @@ const people = [
     url: "https://x.com/ThePrimeagen",
   },
   {
+    name: "Harkirat Singh",
+    handle: "@kirat_tw",
+    url: "https://x.com/kirat_tw",
+  },
+  {
     name: "Manu Arora",
     handle: "@mannupaaji",
     url: "https://x.com/mannupaaji",
+  },
+  {
+    name: "Mehul Mohan",
+    handle: "@mehulmpt",
+    url: "https://x.com/mehulmpt",
   },
   {
     name: "TJ DeVries",

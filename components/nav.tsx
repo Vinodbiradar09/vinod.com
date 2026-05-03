@@ -8,8 +8,15 @@ const pixel = Press_Start_2P({
 });
 
 interface NavProps {
-  active: "home" | "writings" | "people";
+  active: "home" | "writings" | "people" | "uses";
 }
+
+const links: { href: string; label: string; id: NavProps["active"] }[] = [
+  { href: "/", label: "Home", id: "home" },
+  { href: "/writings", label: "Writings", id: "writings" },
+  { href: "/people", label: "People", id: "people" },
+  { href: "/uses", label: "Uses", id: "uses" },
+];
 
 export function Nav({ active }: NavProps) {
   return (
@@ -22,40 +29,20 @@ export function Nav({ active }: NavProps) {
           Vinod Biradar
         </h1>
       </Link>
-      <nav
-        className="flex gap-5 text-[15px]"
-        style={{ fontFamily: "var(--font-space-grotesk)" }}
-      >
-        <Link
-          href="/"
-          className={`no-underline transition-colors ${
-            active === "home"
-              ? "text-[#e8e5df] font-medium"
-              : "text-[#555] hover:text-[#e8e5df]"
-          }`}
-        >
-          Home
-        </Link>
-        <Link
-          href="/writings"
-          className={`no-underline transition-colors ${
-            active === "writings"
-              ? "text-[#e8e5df] font-medium"
-              : "text-[#555] hover:text-[#e8e5df]"
-          }`}
-        >
-          Writings
-        </Link>
-        <Link
-          href="/people"
-          className={`no-underline transition-colors ${
-            active === "people"
-              ? "text-[#e8e5df] font-medium"
-              : "text-[#555] hover:text-[#e8e5df]"
-          }`}
-        >
-          People
-        </Link>
+      <nav className="flex flex-wrap gap-5 text-[15px]">
+        {links.map((link) => (
+          <Link
+            key={link.id}
+            href={link.href}
+            className={`no-underline transition-colors ${
+              active === link.id
+                ? "text-[#e8e5df] font-medium"
+                : "text-[#555] hover:text-[#e8e5df]"
+            }`}
+          >
+            {link.label}
+          </Link>
+        ))}
       </nav>
     </div>
   );

@@ -31,7 +31,34 @@ export const metadata: Metadata = {
   },
   description:
     "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
+
+  openGraph: {
+    title: "Vinod Biradar",
+    description:
+      "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
+    url: "https://vin0d.com",
+    siteName: "Vinod Biradar",
+    images: [
+      {
+        url: "/og-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Vinod Biradar — Full-stack developer",
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Vinod Biradar",
+    description:
+      "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
+    images: ["/og-banner.jpg"],
+    creator: "@toovinod09",
+  },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

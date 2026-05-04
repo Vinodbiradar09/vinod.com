@@ -25,10 +25,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://vin0d.com"),
+
   title: {
     default: "Vinod Biradar",
     template: "%s — Vinod Biradar",
   },
+
   description:
     "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
 
@@ -38,15 +40,15 @@ export const metadata: Metadata = {
       "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
     url: "https://vin0d.com",
     siteName: "Vinod Biradar",
+    type: "website",
     images: [
       {
-        url: "/og-banner.jpg",
+        url: "https://vin0d.com/og-banner.jpeg",
         width: 1200,
         height: 630,
         alt: "Vinod Biradar — Full-stack developer",
       },
     ],
-    type: "website",
   },
 
   twitter: {
@@ -54,7 +56,7 @@ export const metadata: Metadata = {
     title: "Vinod Biradar",
     description:
       "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
-    images: ["/og-banner.jpg"],
+    images: ["https://vin0d.com/og-banner.jpeg"],
     creator: "@toovinod09",
   },
 };

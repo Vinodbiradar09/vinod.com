@@ -1,7 +1,7 @@
 import { getAllWritings } from "@/lib/writings";
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://vinodbiradar.dev";
+const BASE_URL = "https://vin0d.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const writings = getAllWritings();
@@ -25,6 +25,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
+    },
+    // Add your other pages:
+    {
+      url: `${BASE_URL}/people`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${BASE_URL}/uses`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
     ...writingRoutes,
   ];

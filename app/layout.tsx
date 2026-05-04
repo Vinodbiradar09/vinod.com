@@ -24,6 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vin0d.com"),
   title: {
     default: "Vinod Biradar",
     template: "%s — Vinod Biradar",
@@ -31,7 +32,6 @@ export const metadata: Metadata = {
   description:
     "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

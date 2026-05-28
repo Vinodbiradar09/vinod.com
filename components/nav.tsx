@@ -8,11 +8,12 @@ const pixel = Press_Start_2P({
 });
 
 interface NavProps {
-  active: "home" | "writings" | "people" | "uses";
+  active: "home" | "experience" | "writings" | "people" | "uses";
 }
 
 const links: { href: string; label: string; id: NavProps["active"] }[] = [
   { href: "/", label: "Home", id: "home" },
+  { href: "/experience", label: "Experience", id: "experience" },
   { href: "/writings", label: "Writings", id: "writings" },
   { href: "/people", label: "People", id: "people" },
   { href: "/uses", label: "Uses", id: "uses" },

@@ -2,6 +2,7 @@ import { WritingsPreview } from "@/components/writings-preview";
 import { SectionDivider } from "@/components/section-divider";
 import { ContactSection } from "@/components/contact-section";
 import { AboutSection } from "@/components/about-section";
+import { ExperienceSection } from "@/components/experience-section";
 import { WorkSection } from "@/components/work-section";
 import { FadeIn } from "@/components/fade-in";
 import { Nav } from "@/components/nav";
@@ -19,13 +20,17 @@ export default function HomePage() {
       </FadeIn>
       <FadeIn delay={160}>
         <SectionDivider />
-        <WorkSection />
+        <ExperienceSection />
       </FadeIn>
       <FadeIn delay={240}>
         <SectionDivider />
-        <WritingsPreview />
+        <WorkSection />
       </FadeIn>
       <FadeIn delay={320}>
+        <SectionDivider />
+        <WritingsPreview />
+      </FadeIn>
+      <FadeIn delay={400}>
         <SectionDivider />
         <ContactSection />
       </FadeIn>

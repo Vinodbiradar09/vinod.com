@@ -14,9 +14,9 @@ const ROLES: Role[] = [
     company: "Scalio",
     href: "https://scalio.app",
     logo: "/scalio.png",
-    title: "Software Engineer Intern",
+    title: "Software Engineer",
     dates: "May 2026 — Now",
-    bullets: ["Joined an amazing team as SWE Intern."],
+    bullets: ["Joined an amazing team as SWE."],
   },
 ];
 

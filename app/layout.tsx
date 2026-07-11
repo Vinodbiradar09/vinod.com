@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
 
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }],
-    shortcut: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }],
-    apple: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }],
+    icon: [{ url: "/vinod.jpeg", type: "image/jpeg" }],
+    shortcut: [{ url: "/vinod.jpeg", type: "image/jpeg" }],
+    apple: [{ url: "/vinod.jpeg", type: "image/jpeg" }],
   },
 
   openGraph: {

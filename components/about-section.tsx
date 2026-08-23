@@ -22,7 +22,7 @@ export function AboutSection() {
         </a>{" "}
         or find me on{" "}
         <a
-          href="https://github.com/Vinodbiradar09"
+          href="https://github.com/toovinod"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#e8e5df] underline underline-offset-[3px] hover:opacity-70 transition-opacity"
@@ -31,7 +31,7 @@ export function AboutSection() {
         </a>{" "}
         or{" "}
         <a
-          href="https://x.com/toovinod09"
+          href="https://x.com/too_vinod"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#e8e5df] underline underline-offset-[3px] hover:opacity-70 transition-opacity"

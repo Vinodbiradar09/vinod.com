@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     description:
       "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
     images: ["https://vin0d.com/og-banner.jpeg"],
-    creator: "@toovinod09",
+    creator: "@too_vinod",
   },
 };
 

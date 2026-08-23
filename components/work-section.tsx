@@ -69,8 +69,8 @@ function StatLink({ href, label }: { href: string; label: string }) {
 }
 
 export async function WorkSection() {
-  const INVITELY_REPO = "Vinodbiradar09/Invitely.gg";
-  const COSRX_REPO = "Vinodbiradar09/cosrx";
+  const INVITELY_REPO = "toovinod/Invitely.gg";
+  const COSRX_REPO = "toovinod/cosrx";
 
   const [invitely, cosrxNpm, cosrxGh] = await Promise.all([
     getGithubStats(INVITELY_REPO),

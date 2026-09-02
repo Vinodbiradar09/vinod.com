@@ -1,39 +1,29 @@
-import { WritingsPreview } from "@/components/writings-preview";
-import { SectionDivider } from "@/components/section-divider";
-import { ContactSection } from "@/components/contact-section";
-import { AboutSection } from "@/components/about-section";
-import { ExperienceSection } from "@/components/experience-section";
-import { WorkSection } from "@/components/work-section";
-import { FadeIn } from "@/components/fade-in";
-import { Nav } from "@/components/nav";
-
-export const revalidate = false;
+import { PageShell } from "@/components/layout/page-shell";
+import { SiteHeader } from "@/components/layout/site-header";
+import { CreationList } from "@/components/portfolio/creation-list";
+import { ProfileIntro } from "@/components/portfolio/profile-intro";
+import { RoleList } from "@/components/portfolio/role-list";
+import { PortfolioSection } from "@/components/ui/portfolio-section";
 
 export default function HomePage() {
   return (
-    <main className="max-w-155 mx-auto px-6 py-16 w-full">
-      <FadeIn delay={0}>
-        <Nav active="home" />
-      </FadeIn>
-      <FadeIn delay={80}>
-        <AboutSection />
-      </FadeIn>
-      <FadeIn delay={160}>
-        <SectionDivider />
-        <ExperienceSection />
-      </FadeIn>
-      <FadeIn delay={240}>
-        <SectionDivider />
-        <WorkSection />
-      </FadeIn>
-      <FadeIn delay={320}>
-        <SectionDivider />
-        <WritingsPreview />
-      </FadeIn>
-      <FadeIn delay={400}>
-        <SectionDivider />
-        <ContactSection />
-      </FadeIn>
-    </main>
+    <PageShell>
+      <SiteHeader animate />
+      <ProfileIntro />
+      <PortfolioSection
+        id="where-i-build"
+        title="Where I build"
+        className="motion-safe:animate-reveal [animation-delay:140ms]"
+      >
+        <RoleList />
+      </PortfolioSection>
+      <PortfolioSection
+        id="made"
+        title="Made"
+        className="motion-safe:animate-reveal [animation-delay:210ms]"
+      >
+        <CreationList />
+      </PortfolioSection>
+    </PageShell>
   );
 }

@@ -1,99 +1,101 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --font-sans: var(--font-inter);
-    --font-mono: var(--font-geist-mono);
-    --font-serif: var(--font-instrument-serif);
-    --color-border: var(--border);
-    --color-input: var(--input);
-    --color-ring: var(--ring);
-    --color-primary: var(--primary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-secondary: var(--secondary);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-muted: var(--muted);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-accent: var(--accent);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-destructive: var(--destructive);
-    --color-card: var(--card);
-    --color-card-foreground: var(--card-foreground);
-    --color-popover: var(--popover);
-    --color-popover-foreground: var(--popover-foreground);
-    --radius-sm: calc(var(--radius) * 0.6);
-    --radius-md: calc(var(--radius) * 0.8);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) * 1.4);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-page: var(--page-background);
+  --color-surface: var(--surface-background);
+  --color-ink: var(--foreground);
+  --color-muted: var(--muted-foreground);
+  --color-rule: var(--border-color);
+  --color-rule-strong: var(--strong-border-color);
+  --color-link-line: var(--link-underline);
+  --color-focus: var(--focus-ring);
+}
+
+@theme {
+  --animate-reveal: reveal 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 :root {
-    --background: #0d0d0d;
-    --foreground: #e8e5df;
-    --card: #141414;
-    --card-foreground: #e8e5df;
-    --popover: #141414;
-    --popover-foreground: #e8e5df;
-    --primary: #e8e5df;
-    --primary-foreground: #0d0d0d;
-    --secondary: #1c1c1c;
-    --secondary-foreground: #e8e5df;
-    --muted: #1c1c1c;
-    --muted-foreground: #555;
-    --accent: #1c1c1c;
-    --accent-foreground: #e8e5df;
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: #242424;
-    --input: #242424;
-    --ring: #444;
-    --radius: 0.5rem;
+  --page-background: #fbfbfa;
+  --surface-background: #ffffff;
+  --foreground: #111111;
+  --muted-foreground: rgb(17 17 17 / 45%);
+  --border-color: rgb(17 17 17 / 7%);
+  --strong-border-color: rgb(17 17 17 / 10%);
+  --link-underline: #d9d9d5;
+  --focus-ring: #5d8df7;
+  color-scheme: light;
+}
+
+:root.dark {
+  --page-background: #000000;
+  --surface-background: #080808;
+  --foreground: #f0f0ec;
+  --muted-foreground: rgb(240 240 236 / 48%);
+  --border-color: rgb(240 240 236 / 8%);
+  --strong-border-color: rgb(240 240 236 / 12%);
+  --link-underline: #4b4c48;
+  --focus-ring: #82a8ff;
+  color-scheme: dark;
 }
 
 @layer base {
-    * {
-        @apply border-border outline-ring/50;
-        box-sizing: border-box;
-    }
+  html,
+  body {
+    min-height: 100%;
+    background: var(--page-background);
+  }
 
-    body {
-        background-color: var(--background);
-        color: var(--foreground);
-        font-family:
-            var(--font-inter),
-            system-ui,
-            -apple-system,
-            sans-serif;
-        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    }
+  html {
+    transition: background-color 240ms ease;
+  }
 
-    /* Force all headings to use Inter — covers ProseContent markdown headings */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family:
-            var(--font-inter),
-            system-ui,
-            -apple-system,
-            sans-serif;
-        font-weight: 600;
-        letter-spacing: -0.015em;
-    }
+  body {
+    color: var(--foreground);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-optical-sizing: auto;
+    font-synthesis: weight style small-caps;
+    font-variation-settings: normal;
+    text-rendering: optimizeLegibility;
+    transition:
+      color 240ms ease,
+      background-color 240ms ease;
+  }
 
-    a {
-        text-underline-offset: 3px;
-    }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  ::selection {
+    background: rgb(93 141 247 / 22%);
+  }
 }
 
-@layer utilities {
-    .text-shadow-sm {
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-    }
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

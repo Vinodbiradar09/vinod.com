@@ -1,6 +1,7 @@
-import { Inter, Instrument_Serif, Geist_Mono } from "next/font/google";
 import type { Metadata } from "next";
-import { cn } from "@/lib/utils";
+import { Inter } from "next/font/google";
+import { ThemeScript } from "@/components/theme-script";
+import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,78 +10,48 @@ const inter = Inter({
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vin0d.com"),
-
+  metadataBase: siteConfig.url,
   title: {
-    default: "Vinod Biradar",
-    template: "%s — Vinod Biradar",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-
-  description:
-    "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
-
+  description: siteConfig.description,
   icons: {
-    icon: [{ url: "/vinod.jpeg", type: "image/jpeg" }],
-    shortcut: [{ url: "/vinod.jpeg", type: "image/jpeg" }],
-    apple: [{ url: "/vinod.jpeg", type: "image/jpeg" }],
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
-
   openGraph: {
-    title: "Vinod Biradar",
-    description:
-      "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
-    url: "https://vin0d.com",
-    siteName: "Vinod Biradar",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     type: "website",
     images: [
       {
-        url: "https://vin0d.com/og-banner.jpeg",
+        url: siteConfig.socialImage,
         width: 1200,
         height: 630,
-        alt: "Vinod Biradar — Full-stack developer",
+        alt: "Vinod Biradar, Software Engineer",
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "Vinod Biradar",
-    description:
-      "Full-stack developer working across the JavaScript ecosystem, mainly with TypeScript, Next.js, and Node.js.",
-    images: ["https://vin0d.com/og-banner.jpeg"],
-    creator: "@too_vinod",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.socialImage],
+    creator: siteConfig.twitterHandle,
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={cn(
-        "h-full antialiased",
-        inter.variable,
-        instrumentSerif.variable,
-        geistMono.variable,
-      )}
-    >
-      <body className="min-h-full flex flex-col bg-[#0d0d0d]">{children}</body>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

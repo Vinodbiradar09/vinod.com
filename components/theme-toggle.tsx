@@ -1,25 +1,8 @@
 "use client";
 
-import { THEME_STORAGE_KEY, type Theme } from "@/lib/theme";
-
-function applyTheme(theme: Theme) {
-  const root = document.documentElement;
-
-  root.classList.toggle("dark", theme === "dark");
-  root.style.colorScheme = theme;
-
-  try {
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
-  } catch {}
-}
+import { toggleTheme } from "@/lib/theme";
 
 export function ThemeToggle() {
-  function toggleTheme() {
-    const root = document.documentElement;
-    const nextTheme: Theme = root.classList.contains("dark") ? "light" : "dark";
-    applyTheme(nextTheme);
-  }
-
   return (
     <button
       type="button"

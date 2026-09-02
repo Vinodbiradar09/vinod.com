@@ -1,47 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { CheckIcon, CopyIcon } from "@/components/ui/icons";
 import { PortfolioLink } from "@/components/ui/portfolio-link";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 interface EmailContactProps {
   email: string;
 }
 
 export function EmailContact({ email }: EmailContactProps) {
-  const [copied, setCopied] = useState(false);
-  const resetTimer = useRef<number | null>(null);
-
-  useEffect(
-    () => () => {
-      if (resetTimer.current !== null) {
-        window.clearTimeout(resetTimer.current);
-      }
-    },
-    [],
-  );
-
-  async function copyEmail() {
-    try {
-      await navigator.clipboard.writeText(email);
-      setCopied(true);
-
-      if (resetTimer.current !== null) {
-        window.clearTimeout(resetTimer.current);
-      }
-
-      resetTimer.current = window.setTimeout(() => setCopied(false), 1400);
-    } catch {}
-  }
+  const { copied, copy } = useCopyToClipboard();
 
   return (
     <span className="group/email inline-flex items-center">
-      <PortfolioLink href={`mailto:${email}`} external={false}>
+      <PortfolioLink href={`mailto:${email}`} external={false} className="italic">
         email
       </PortfolioLink>
       <button
         type="button"
-        onClick={copyEmail}
+        onClick={() => copy(email)}
         data-copied={copied}
         className="group/copy relative ml-1 inline-grid size-4 cursor-pointer place-items-center rounded-[2px] text-muted opacity-70 transition-[color,opacity,transform] duration-[160ms] ease-out hover:text-ink active:translate-y-px focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus data-[copied=true]:text-ink data-[copied=true]:opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/email:opacity-100"
         aria-label={copied ? "Email address copied" : "Copy email address"}

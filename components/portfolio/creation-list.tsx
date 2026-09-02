@@ -1,20 +1,19 @@
 import { PortfolioLink } from "@/components/ui/portfolio-link";
 import { type Creation, creations } from "@/lib/portfolio-data";
 
-function CreationItem({ creation }: { creation: Creation }) {
+function CreationItem({ creation, index }: { creation: Creation; index: number }) {
   return (
-    <article className="group/creation grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-0.5 border-b border-rule py-3.5 transition-[opacity,transform] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] last:border-b-0 hover:translate-x-0.5 focus-within:translate-x-0.5 sm:grid-cols-[108px_minmax(0,1fr)_auto] sm:items-center sm:gap-5 sm:py-[13px]">
+    <article
+      className="group/creation grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-0.5 border-b border-rule py-3.5 opacity-0 transition-[opacity,transform] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:animate-row-in motion-reduce:opacity-100 last:border-b-0 hover:translate-x-0.5 focus-within:translate-x-0.5 [&:has(a:active)]:translate-x-0.5 [&:has(a:active)]:opacity-75 sm:grid-cols-[108px_minmax(0,1fr)_auto] sm:items-center sm:gap-5 sm:py-[13px]"
+      style={{ animationDelay: `${290 + index * 40}ms` }}
+    >
       <PortfolioLink href={creation.href} variant="title" showIcon revealIcon>
         <h3>{creation.name}</h3>
       </PortfolioLink>
-      <p className="col-span-2 row-start-2 text-[13px] text-muted sm:col-span-1 sm:row-start-auto sm:flex sm:min-w-0 sm:items-center sm:gap-3 sm:whitespace-nowrap">
+      <p className="col-span-2 row-start-2 text-[13px] text-muted sm:col-span-1 sm:row-start-auto sm:whitespace-nowrap">
         <span className="transition-colors duration-[180ms] group-hover/creation:text-ink group-focus-within/creation:text-ink">
           {creation.description}
         </span>
-        <span
-          aria-hidden="true"
-          className="hidden min-w-4 flex-1 origin-left scale-x-0 border-b border-dotted border-rule-strong opacity-0 transition-[opacity,transform] duration-[180ms] ease-out group-hover/creation:scale-x-100 group-hover/creation:opacity-100 group-focus-within/creation:scale-x-100 group-focus-within/creation:opacity-100 sm:block"
-        />
       </p>
       <div className="col-start-2 row-start-1 flex flex-wrap justify-end gap-2.5 whitespace-nowrap sm:col-start-auto sm:row-start-auto">
         {creation.links.map((link) => (
@@ -36,8 +35,8 @@ function CreationItem({ creation }: { creation: Creation }) {
 export function CreationList() {
   return (
     <div className="border-b border-rule [@media(hover:hover)]:[&:hover>article:not(:hover)]:opacity-60 [&:has(article:focus-within)>article:not(:focus-within)]:opacity-60">
-      {creations.map((creation) => (
-        <CreationItem key={creation.name} creation={creation} />
+      {creations.map((creation, index) => (
+        <CreationItem key={creation.name} creation={creation} index={index} />
       ))}
     </div>
   );

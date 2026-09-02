@@ -26,9 +26,6 @@ export const currentRole = {
 
 export const roles = [currentRole] as const satisfies readonly Role[];
 
-export const profileSummary =
-  "I like software with a little quiet magic, simple on the surface, solid underneath. I mostly work with TypeScript and Postgres.";
-
 export const creations = [
   {
     name: "Invitely.gg",

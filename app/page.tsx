@@ -8,20 +8,16 @@ import { PortfolioSection } from "@/components/ui/portfolio-section";
 export default function HomePage() {
   return (
     <PageShell>
-      <SiteHeader animate />
+      <SiteHeader />
       <ProfileIntro />
       <PortfolioSection
         id="where-i-build"
         title="Where I build"
-        className="motion-safe:animate-reveal [animation-delay:100ms]"
+        className="[--section-delay:190ms]"
       >
         <RoleList />
       </PortfolioSection>
-      <PortfolioSection
-        id="made"
-        title="Made"
-        className="motion-safe:animate-reveal [animation-delay:150ms]"
-      >
+      <PortfolioSection id="made" title="Made" className="[--section-delay:250ms]">
         <CreationList />
       </PortfolioSection>
     </PageShell>

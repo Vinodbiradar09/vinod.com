@@ -1,21 +1,20 @@
+import { CommandPalette } from "@/components/command-palette";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { cn } from "@/lib/cn";
+import { InteractiveName } from "@/components/ui/interactive-name";
 import { siteConfig } from "@/lib/site-config";
 
-interface SiteHeaderProps {
-  animate?: boolean;
-}
-
-export function SiteHeader({ animate = false }: SiteHeaderProps) {
+export function SiteHeader() {
   return (
-    <header
-      className={cn(
-        "flex items-start justify-between gap-6",
-        animate && "motion-safe:animate-reveal",
-      )}
-    >
-      <h1 className="font-medium text-ink">{siteConfig.name}</h1>
-      <ThemeToggle />
+    <header className="group/header flex items-start justify-between gap-6">
+      <div className="overflow-hidden">
+        <div className="motion-safe:animate-rise-in">
+          <InteractiveName name={siteConfig.name} />
+        </div>
+      </div>
+      <div className="flex items-start gap-3 motion-safe:animate-rise-in [animation-delay:50ms]">
+        <CommandPalette />
+        <ThemeToggle />
+      </div>
     </header>
   );
 }

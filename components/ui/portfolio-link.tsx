@@ -4,7 +4,7 @@ import { ArrowUpRightIcon } from "./icons";
 
 const variants = {
   inline:
-    "relative inline-block rounded-[2px] text-inherit no-underline before:absolute before:inset-x-0 before:-bottom-px before:h-px before:rounded-full before:bg-link-line after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:scale-x-0 after:rounded-full after:bg-ink after:transition-transform after:duration-[180ms] after:ease-out hover:after:scale-x-100 focus-visible:after:scale-x-100",
+    "relative inline-block rounded-[2px] text-inherit underline decoration-link-line underline-offset-[3px] transition-[text-decoration-color,transform] duration-[160ms] ease-out hover:decoration-ink focus-visible:decoration-ink",
   muted:
     "inline-flex items-center gap-0.5 rounded-[2px] text-xs leading-5 text-muted no-underline transition-colors duration-150 hover:text-ink",
   plain: "rounded-[2px] text-ink no-underline",

@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 
 function IntroLine({ children, delay }: { children: React.ReactNode; delay: number }) {
   return (
-    <div className="overflow-hidden">
+    <div>
       <p className="motion-safe:animate-rise-in" style={{ animationDelay: `${delay}ms` }}>
         {children}
       </p>
@@ -19,7 +19,7 @@ export function ProfileIntro() {
     <div className="mt-9 space-y-5">
       <IntroLine delay={50}>
         I currently work at{" "}
-        <PortfolioLink href={currentRole.href} className="italic">
+        <PortfolioLink href={currentRole.href} variant="editorial">
           {currentRole.company}
         </PortfolioLink>{" "}
         as a {currentRole.role}.
@@ -30,11 +30,11 @@ export function ProfileIntro() {
       </IntroLine>
       <IntroLine delay={150}>
         You can find me on{" "}
-        <PortfolioLink href={siteConfig.social.x} className="italic">
+        <PortfolioLink href={siteConfig.social.x} variant="editorial">
           X
         </PortfolioLink>{" "}
         and{" "}
-        <PortfolioLink href={siteConfig.social.github} className="italic">
+        <PortfolioLink href={siteConfig.social.github} variant="editorial">
           GitHub
         </PortfolioLink>
         , or reach me via <EmailContact email={siteConfig.email} />.

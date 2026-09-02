@@ -13,19 +13,19 @@ export function EmailContact({ email }: EmailContactProps) {
 
   return (
     <span className="group/email inline-flex items-center">
-      <PortfolioLink href={`mailto:${email}`} external={false} className="italic">
+      <PortfolioLink href={`mailto:${email}`} external={false} variant="editorial">
         email
       </PortfolioLink>
       <button
         type="button"
         onClick={() => copy(email)}
         data-copied={copied}
-        className="group/copy relative ml-1 inline-grid size-4 cursor-pointer place-items-center rounded-[2px] text-muted opacity-70 transition-[color,opacity,transform] duration-[160ms] ease-out hover:text-ink active:translate-y-px focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus data-[copied=true]:text-ink data-[copied=true]:opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/email:opacity-100"
+        className="group/copy relative ml-1 inline-grid size-4 cursor-pointer place-items-center rounded-[2px] text-muted opacity-70 transition-[color,opacity,scale,translate] duration-[160ms] ease-out hover:text-ink active:translate-y-px active:scale-[0.92] focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus data-[copied=true]:text-ink data-[copied=true]:opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/email:opacity-100"
         aria-label={copied ? "Email address copied" : "Copy email address"}
       >
-        <CopyIcon className="absolute size-3 transition-[opacity,transform] duration-[160ms] group-data-[copied=true]/copy:scale-75 group-data-[copied=true]/copy:opacity-0" />
-        <CheckIcon className="absolute size-3 scale-75 opacity-0 transition-[opacity,transform] duration-[160ms] group-data-[copied=true]/copy:scale-100 group-data-[copied=true]/copy:opacity-100" />
-        <span className="pointer-events-none absolute bottom-[calc(100%+5px)] left-1/2 -translate-x-1/2 translate-y-0.5 rounded bg-ink px-1.5 py-0.5 text-[10px] leading-4 whitespace-nowrap text-page opacity-0 shadow-sm transition-[opacity,transform] duration-[160ms] group-hover/copy:translate-y-0 group-hover/copy:opacity-100 group-focus-visible/copy:translate-y-0 group-focus-visible/copy:opacity-100">
+        <CopyIcon className="absolute size-3 transition-[opacity,scale] duration-[160ms] group-data-[copied=true]/copy:scale-75 group-data-[copied=true]/copy:opacity-0" />
+        <CheckIcon className="absolute size-3 scale-75 opacity-0 transition-[opacity,scale] duration-[160ms] group-data-[copied=true]/copy:scale-100 group-data-[copied=true]/copy:opacity-100" />
+        <span className="pointer-events-none absolute bottom-[calc(100%+5px)] left-1/2 -translate-x-1/2 translate-y-0.5 rounded bg-ink px-1.5 py-0.5 text-[10px] leading-4 whitespace-nowrap text-page opacity-0 shadow-sm transition-[opacity,translate] duration-[160ms] group-hover/copy:translate-y-0 group-hover/copy:opacity-100 group-focus-visible/copy:translate-y-0 group-focus-visible/copy:opacity-100">
           {copied ? "Copied" : "Copy"}
         </span>
       </button>

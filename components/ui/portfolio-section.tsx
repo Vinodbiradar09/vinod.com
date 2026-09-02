@@ -21,10 +21,7 @@ export function PortfolioSection({ children, className, id, title }: PortfolioSe
           {title}
         </h2>
       </div>
-      <span
-        aria-hidden="true"
-        className="block h-px origin-left scale-x-0 bg-rule motion-safe:animate-rule-draw motion-reduce:scale-x-100 [animation-delay:var(--section-delay)]"
-      />
+      <span aria-hidden="true" className="block h-px bg-rule" />
       {children}
     </section>
   );

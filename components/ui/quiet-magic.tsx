@@ -1,23 +1,24 @@
+const sparkles = [
+  { className: "-top-1.5 left-[8%]", delay: "0ms" },
+  { className: "-top-2 left-[48%]", delay: "85ms" },
+  { className: "-top-1 right-[3%]", delay: "170ms" },
+] as const;
+
 export function QuietMagic() {
   return (
     <span className="group/magic relative inline-block cursor-default">
       quiet magic
-      <span
-        aria-hidden="true"
-        className="absolute inset-x-0 -bottom-px h-px origin-left scale-x-0 bg-ink opacity-0 group-hover/magic:animate-magic-line"
-      />
-      <span
-        aria-hidden="true"
-        className="absolute top-0 left-[13%] size-px rounded-full bg-ink opacity-0 shadow-[0_0_5px_currentColor] group-hover/magic:animate-magic-spark"
-      />
-      <span
-        aria-hidden="true"
-        className="absolute -top-0.5 left-[52%] size-px rounded-full bg-ink opacity-0 shadow-[0_0_5px_currentColor] group-hover/magic:animate-magic-spark [animation-delay:70ms]"
-      />
-      <span
-        aria-hidden="true"
-        className="absolute top-0 right-[8%] size-px rounded-full bg-ink opacity-0 shadow-[0_0_5px_currentColor] group-hover/magic:animate-magic-spark [animation-delay:140ms]"
-      />
+      {sparkles.map((sparkle) => (
+        <span
+          key={sparkle.className}
+          aria-hidden="true"
+          className={`absolute size-[5px] opacity-0 motion-safe:group-hover/magic:animate-magic-spark ${sparkle.className}`}
+          style={{ animationDelay: sparkle.delay }}
+        >
+          <span className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 rounded-full bg-ink shadow-[0_0_7px_currentColor]" />
+          <span className="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 rounded-full bg-ink shadow-[0_0_7px_currentColor]" />
+        </span>
+      ))}
     </span>
   );
 }

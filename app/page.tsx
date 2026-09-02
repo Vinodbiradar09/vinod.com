@@ -13,14 +13,14 @@ export default function HomePage() {
       <PortfolioSection
         id="where-i-build"
         title="Where I build"
-        className="motion-safe:animate-reveal [animation-delay:140ms]"
+        className="motion-safe:animate-reveal [animation-delay:100ms]"
       >
         <RoleList />
       </PortfolioSection>
       <PortfolioSection
         id="made"
         title="Made"
-        className="motion-safe:animate-reveal [animation-delay:210ms]"
+        className="motion-safe:animate-reveal [animation-delay:150ms]"
       >
         <CreationList />
       </PortfolioSection>

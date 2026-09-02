@@ -16,29 +16,27 @@ export function ArrowUpRightIcon(props: IconProps) {
   );
 }
 
-export function MoonIcon(props: IconProps) {
+export function CopyIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
+      <rect x="5.25" y="5.25" width="7.5" height="7.5" rx="1.25" stroke="currentColor" />
       <path
-        d="M16.4 12.3A6.6 6.6 0 0 1 7.7 3.6 6.6 6.6 0 1 0 16.4 12.3Z"
+        d="M3.25 10.75h-.5a1.5 1.5 0 0 1-1.5-1.5v-6.5a1.5 1.5 0 0 1 1.5-1.5h6.5a1.5 1.5 0 0 1 1.5 1.5v.5"
         stroke="currentColor"
-        strokeWidth="1.5"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
     </svg>
   );
 }
 
-export function SunIcon(props: IconProps) {
+export function CheckIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
-      <circle cx="10" cy="10" r="3.25" stroke="currentColor" strokeWidth="1.5" />
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
-        d="M10 2.25v1.5M10 16.25v1.5M17.75 10h-1.5M3.75 10h-1.5M15.48 4.52l-1.06 1.06M5.58 14.42l-1.06 1.06M15.48 15.48l-1.06-1.06M5.58 5.58 4.52 4.52"
+        d="m3.25 8.25 3 3 6.5-6.5"
         stroke="currentColor"
-        strokeWidth="1.5"
         strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

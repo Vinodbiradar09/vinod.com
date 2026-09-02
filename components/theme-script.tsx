@@ -1,12 +1,11 @@
-import Script from "next/script";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
 
-const themeScript = `(function(){try{var t=localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light'}catch(e){}})()`;
+const themeScript = `(function(){var d=matchMedia('(prefers-color-scheme: dark)').matches;try{var t=localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});if(t)d=t==='dark'}catch(e){}var r=document.documentElement;r.classList.toggle('dark',d);r.style.colorScheme=d?'dark':'light'})()`;
 
 export function ThemeScript() {
   return (
-    <Script id="theme-preference" strategy="beforeInteractive">
+    <script id="theme-preference" suppressHydrationWarning>
       {themeScript}
-    </Script>
+    </script>
   );
 }

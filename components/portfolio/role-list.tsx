@@ -10,7 +10,7 @@ function RoleItem({ role }: { role: Role }) {
       className="group/role grid grid-cols-[44px_minmax(0,1fr)] items-center gap-3 py-3.5"
       variant="plain"
     >
-      <span className="grid size-11 place-items-center overflow-hidden rounded-xl border border-rule bg-surface transition-[border-color,transform] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/role:-rotate-2 group-hover/role:scale-[1.03] group-hover/role:border-rule-strong">
+      <span className="grid size-11 place-items-center overflow-hidden rounded-xl border border-rule bg-surface transition-[border-color,box-shadow,transform] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/role:-translate-y-px group-hover/role:scale-[1.015] group-hover/role:border-rule-strong group-hover/role:shadow-[0_6px_18px_rgb(0_0_0/7%)] group-focus-visible/role:-translate-y-px group-focus-visible/role:scale-[1.015] group-focus-visible/role:border-rule-strong group-focus-visible/role:shadow-[0_6px_18px_rgb(0_0_0/7%)] dark:group-hover/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)] dark:group-focus-visible/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)]">
         <Image
           src={role.logo}
           alt=""

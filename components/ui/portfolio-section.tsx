@@ -48,7 +48,11 @@ export function PortfolioSection({ children, className, id, title }: PortfolioSe
       className={cn("mt-14 sm:mt-[68px]", className)}
       aria-labelledby={headingId}
     >
-      <div className="relative overflow-hidden">
+      <div
+        data-rerun-item="section"
+        data-rerun-delay={id === "where-i-build" ? "3" : "4"}
+        className="relative overflow-hidden"
+      >
         <h2 id={headingId} className="pb-2 text-muted">
           {title}
         </h2>

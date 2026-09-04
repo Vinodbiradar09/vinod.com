@@ -126,6 +126,8 @@ function RoleItem({ role }: { role: Role }) {
     <PortfolioLink
       href={role.href}
       aria-label={`Visit ${role.company}`}
+      data-rerun-item="row"
+      data-rerun-delay="4"
       onPointerMove={updateSheen}
       className="group/role grid grid-cols-[44px_minmax(0,1fr)] items-center gap-3 py-3.5 opacity-0 motion-safe:animate-row-in motion-reduce:opacity-100 [--sheen-x:50%] [--sheen-y:50%] [animation-delay:230ms]"
       variant="plain"

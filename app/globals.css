@@ -23,8 +23,11 @@
   --animate-hell-fizz: hell-fizz 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-hell-drop-a: hell-drop-a 650ms cubic-bezier(0.16, 1, 0.3, 1) 60ms both;
   --animate-hell-drop-b: hell-drop-b 570ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+  --animate-hell-shake-settle: hell-shake-settle 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-bun-afterimage: bun-afterimage 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-email-flight: email-flight 440ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  --animate-project-route-draw: project-route-draw 430ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-project-branch: project-branch 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-project-route-draw: project-route-draw 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
 
   @keyframes rise-in {
     from {
@@ -162,6 +165,52 @@
     }
   }
 
+  @keyframes hell-shake-settle {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    18% {
+      transform: rotate(-5deg);
+    }
+
+    38% {
+      transform: rotate(3.5deg);
+    }
+
+    60% {
+      transform: rotate(-2deg);
+    }
+
+    80% {
+      transform: rotate(0.75deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes bun-afterimage {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, 4px) skewX(-8deg);
+      filter: blur(1px);
+    }
+
+    22% {
+      opacity: 1;
+      transform: translate(-42%, 0) skewX(0deg);
+      filter: blur(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate(18%, -3px) skewX(5deg);
+      filter: blur(0.6px);
+    }
+  }
+
   @keyframes project-route-draw {
     from {
       stroke-dasharray: 1;
@@ -169,6 +218,30 @@
     }
 
     to {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes project-branch {
+    0% {
+      opacity: 0;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+
+    28% {
+      opacity: 0.38;
+    }
+
+    58% {
+      opacity: 0.3;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+    }
+
+    100% {
+      opacity: 0;
       stroke-dasharray: 1;
       stroke-dashoffset: 0;
     }

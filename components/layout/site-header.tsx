@@ -6,7 +6,7 @@ export function SiteHeader() {
   return (
     <header data-blueprint="header" className="flex items-start justify-between gap-6">
       <div className="overflow-hidden">
-        <div className="motion-safe:animate-rise-in">
+        <div data-rerun-item="rise" className="motion-safe:animate-rise-in">
           <InteractiveName name={siteConfig.name} />
         </div>
       </div>

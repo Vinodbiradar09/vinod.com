@@ -11,6 +11,7 @@ export interface CreationLink {
 }
 
 export interface Creation {
+  command: string;
   name: string;
   identity: string;
   description: string;
@@ -29,6 +30,7 @@ export const roles = [currentRole] as const satisfies readonly Role[];
 
 export const creations = [
   {
+    command: "git clone https://github.com/toovinod/Invitely.gg.git",
     name: "Invitely.gg",
     identity: "toovinod/Invitely",
     description: "Send invitations at scale, on your behalf.",
@@ -39,6 +41,7 @@ export const creations = [
     ],
   },
   {
+    command: "bun add @cosrx/core",
     name: "Cosrx",
     identity: "@cosrx/core",
     description: "A lightweight Promise-based HTTP client built on Fetch.",
@@ -49,6 +52,7 @@ export const creations = [
     ],
   },
   {
+    command: "git clone https://github.com/toovinod/NeetCode.git",
     name: "NeetCode",
     identity: "toovinod/NeetCode",
     description: "Solve coding challenges or create your own.",

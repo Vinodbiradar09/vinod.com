@@ -12,6 +12,7 @@ export interface CreationLink {
 
 export interface Creation {
   name: string;
+  identity: string;
   description: string;
   href: string;
   links: readonly CreationLink[];
@@ -29,6 +30,7 @@ export const roles = [currentRole] as const satisfies readonly Role[];
 export const creations = [
   {
     name: "Invitely.gg",
+    identity: "toovinod/Invitely",
     description: "Send invitations at scale, on your behalf.",
     href: "https://invitely-gg.vercel.app",
     links: [
@@ -38,6 +40,7 @@ export const creations = [
   },
   {
     name: "Cosrx",
+    identity: "@cosrx/core",
     description: "A lightweight Promise-based HTTP client built on Fetch.",
     href: "https://www.npmjs.com/package/@cosrx/core",
     links: [
@@ -47,6 +50,7 @@ export const creations = [
   },
   {
     name: "NeetCode",
+    identity: "toovinod/NeetCode",
     description: "Solve coding challenges or create your own.",
     href: "https://github.com/toovinod/NeetCode",
     links: [{ label: "GitHub", href: "https://github.com/toovinod/NeetCode" }],

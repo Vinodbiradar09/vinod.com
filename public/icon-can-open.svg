@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Opened Hell can</title>
+  <defs>
+    <linearGradient id="body" x1="14" y1="0" x2="50" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b71410"/>
+      <stop offset="0.22" stop-color="#ff4a3e"/>
+      <stop offset="0.7" stop-color="#e2261e"/>
+      <stop offset="1" stop-color="#8f0c09"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="17" y1="5" x2="48" y2="17" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8f8f3"/>
+      <stop offset="0.5" stop-color="#9b9c98"/>
+      <stop offset="1" stop-color="#e8e8e3"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="9" width="36" height="50" rx="8" fill="url(#body)" stroke="#170807" stroke-width="2"/>
+  <ellipse cx="32" cy="11" rx="17" ry="6" fill="url(#metal)" stroke="#252624" stroke-width="2"/>
+  <ellipse cx="32" cy="12" rx="9" ry="3.3" fill="#151514"/>
+  <path d="M31 11 42 3" fill="none" stroke="#e8e8e3" stroke-width="4" stroke-linecap="round"/>
+  <path d="M25 29v20M39 29v20M25 39h14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="51" cy="5" r="2.2" fill="#bfe7ff"/>
+  <circle cx="57" cy="10" r="1.5" fill="#bfe7ff"/>
+</svg>

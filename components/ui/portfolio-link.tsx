@@ -17,6 +17,7 @@ const variants = {
 
 interface PortfolioLinkProps extends ComponentPropsWithoutRef<"a"> {
   external?: boolean;
+  iconClassName?: string;
   showIcon?: boolean;
   revealIcon?: boolean;
   variant?: keyof typeof variants;
@@ -26,6 +27,7 @@ export function PortfolioLink({
   children,
   className,
   external = true,
+  iconClassName,
   showIcon = false,
   revealIcon = false,
   variant = "inline",
@@ -49,7 +51,8 @@ export function PortfolioLink({
             "size-3 shrink-0 transition-[translate] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
             revealIcon
               ? "ml-1 -translate-x-0.5 translate-y-0.5 opacity-0 transition-[opacity,translate] group-hover/title:translate-x-0 group-hover/title:translate-y-0 group-hover/title:opacity-100 group-focus-visible/title:translate-x-0 group-focus-visible/title:translate-y-0 group-focus-visible/title:opacity-100"
-              : "group-hover/link:translate-x-px group-hover/link:-translate-y-px group-focus-visible/link:translate-x-px group-focus-visible/link:-translate-y-px",
+              : "motion-safe:group-hover/link:animate-arrow-launch motion-safe:group-focus-visible/link:animate-arrow-launch",
+            iconClassName,
           )}
         />
       ) : null}

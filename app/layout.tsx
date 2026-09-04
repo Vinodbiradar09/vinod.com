@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeScript } from "@/components/theme-script";
+import { BlueprintMode } from "@/components/ui/blueprint-mode";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -51,7 +52,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <ThemeScript />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <BlueprintMode />
+      </body>
     </html>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { CheckIcon, CopyIcon } from "@/components/ui/icons";
 import { PortfolioLink } from "@/components/ui/portfolio-link";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
@@ -10,24 +11,51 @@ interface EmailContactProps {
 
 export function EmailContact({ email }: EmailContactProps) {
   const { copied, copy } = useCopyToClipboard();
+  const [flightId, setFlightId] = useState(0);
+  const [isFlying, setIsFlying] = useState(false);
+  const flightTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(
+    () => () => {
+      if (flightTimer.current) clearTimeout(flightTimer.current);
+    },
+    [],
+  );
+
+  async function copyEmail() {
+    const didCopy = await copy(email);
+    if (!didCopy) return;
+
+    if (flightTimer.current) clearTimeout(flightTimer.current);
+    setFlightId((current) => current + 1);
+    setIsFlying(true);
+    flightTimer.current = setTimeout(() => setIsFlying(false), 440);
+  }
 
   return (
-    <span className="group/email inline-flex items-center">
+    <span className="group/email relative inline-flex items-center">
       <PortfolioLink href={`mailto:${email}`} external={false} variant="editorial">
         email
       </PortfolioLink>
+      .
+      {flightId > 0 ? (
+        <span
+          key={flightId}
+          aria-hidden="true"
+          className="pointer-events-none absolute top-0 left-2 z-10 font-mono text-[10px] font-semibold text-[#ff2d9a] motion-safe:animate-email-flight"
+        >
+          @
+        </span>
+      ) : null}
       <button
         type="button"
-        onClick={() => copy(email)}
-        data-copied={copied}
+        onClick={copyEmail}
+        data-copied={copied && !isFlying}
         className="group/copy relative ml-1 inline-grid size-4 cursor-pointer place-items-center rounded-[2px] text-muted opacity-70 transition-[color,opacity,scale,translate] duration-[160ms] ease-out hover:text-ink active:translate-y-px active:scale-[0.92] focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus data-[copied=true]:text-ink data-[copied=true]:opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/email:opacity-100"
         aria-label={copied ? "Email address copied" : "Copy email address"}
       >
         <CopyIcon className="absolute size-3 transition-[opacity,scale] duration-[160ms] group-data-[copied=true]/copy:scale-75 group-data-[copied=true]/copy:opacity-0" />
         <CheckIcon className="absolute size-3 scale-75 opacity-0 transition-[opacity,scale] duration-[160ms] group-data-[copied=true]/copy:scale-100 group-data-[copied=true]/copy:opacity-100" />
-        <span className="pointer-events-none absolute bottom-[calc(100%+5px)] left-1/2 -translate-x-1/2 translate-y-0.5 rounded bg-ink px-1.5 py-0.5 text-[10px] leading-4 whitespace-nowrap text-page opacity-0 shadow-sm transition-[opacity,translate] duration-[160ms] group-hover/copy:translate-y-0 group-hover/copy:opacity-100 group-focus-visible/copy:translate-y-0 group-focus-visible/copy:opacity-100">
-          {copied ? "Copied" : "Copy"}
-        </span>
       </button>
       <span className="sr-only" aria-live="polite">
         {copied ? "Email address copied" : ""}

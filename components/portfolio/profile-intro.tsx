@@ -3,6 +3,7 @@ import { EmailContact } from "@/components/ui/email-contact";
 import { HellCan } from "@/components/ui/hell-can";
 import { PortfolioLink } from "@/components/ui/portfolio-link";
 import { QuietMagic } from "@/components/ui/quiet-magic";
+import { TechMark } from "@/components/ui/tech-mark";
 import { currentRole } from "@/lib/portfolio-data";
 import { siteConfig } from "@/lib/site-config";
 
@@ -16,8 +17,19 @@ export function ProfileIntro() {
         style={{ animationDelay: "50ms" }}
       >
         <span className="sm:whitespace-nowrap">
-          Here to drink a can of <HellCan /> and write TypeScript. <BunRerun /> runs it, and
-          Postgres remembers it.
+          Here to drink a can of <HellCan /> and write{" "}
+          <TechMark icon="/tech/typescript.svg" iconClassName="size-[18px]">
+            TypeScript
+          </TechMark>
+          .{" "}
+          <TechMark icon="/tech/bun.svg" iconClassName="size-[21px]">
+            <BunRerun />
+          </TechMark>{" "}
+          runs it, and{" "}
+          <TechMark icon="/tech/postgresql.svg" iconClassName="size-[21px]">
+            Postgres
+          </TechMark>{" "}
+          remembers it.
         </span>
         <br />
         Currently working at{" "}

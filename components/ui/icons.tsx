@@ -2,20 +2,6 @@ import type { ComponentPropsWithoutRef } from "react";
 
 type IconProps = ComponentPropsWithoutRef<"svg">;
 
-export function ArrowUpRightIcon(props: IconProps) {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M4.25 11.75 11.75 4.25M5.25 4.25h6.5v6.5"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export function CopyIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>

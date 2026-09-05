@@ -1,13 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import {
   type MouseEvent,
   type PointerEvent,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
+import { cn } from "@/lib/cn";
 
 const OPEN_ANIMATION_MS = 720;
 const CAN_AUDIO_START_SECONDS = 0.1;
@@ -31,10 +34,13 @@ interface ShakeGesture {
 
 export function HellCan() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [isShaken, setIsShaken] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
+  const [labelWidth, setLabelWidth] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
   const isOpening = useRef(false);
   const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const faviconTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -65,6 +71,18 @@ export function HellCan() {
     },
     [],
   );
+
+  useLayoutEffect(() => {
+    const label = labelRef.current;
+    if (!label) return;
+
+    const measure = () => setLabelWidth(label.getBoundingClientRect().width);
+    measure();
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(label);
+    return () => observer.disconnect();
+  }, []);
 
   const echoFavicon = useCallback(() => {
     if (!faviconLink.current) {
@@ -218,6 +236,8 @@ export function HellCan() {
     openCan();
   }
 
+  const showCan = isHovered || isOpen;
+
   return (
     <>
       <button
@@ -227,38 +247,47 @@ export function HellCan() {
         data-dragging={isDragging}
         data-shaken={isShaken}
         onClick={clickCan}
+        onPointerEnter={() => setIsHovered(true)}
+        onPointerLeave={() => setIsHovered(false)}
         onPointerDown={startShake}
         onPointerMove={shake}
         onPointerUp={finishShake}
         onPointerCancel={finishShake}
-        style={{ translate: `${dragOffset}px 0` }}
-        className="group/hell relative inline-block touch-pan-y cursor-grab rounded-[2px] text-inherit transition-[color,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] select-none data-[dragging=true]:cursor-grabbing data-[dragging=true]:duration-0 data-[open=true]:text-[#ff3b30] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus motion-safe:data-[shaken=true]:animate-hell-shake-settle"
+        style={{
+          marginInlineEnd: showCan && labelWidth ? 28 - labelWidth : 0,
+          translate: `${dragOffset}px 0`,
+        }}
+        className="group/hell relative inline-grid w-max touch-pan-y cursor-grab align-baseline text-inherit transition-[color,margin,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] select-none data-[dragging=true]:cursor-grabbing data-[dragging=true]:duration-0 data-[open=true]:text-[#ff3b30] focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus motion-safe:data-[shaken=true]:animate-hell-shake-settle"
       >
-        Hell
+        <span
+          ref={labelRef}
+          className={cn(
+            "col-start-1 row-start-1 w-max justify-self-start whitespace-nowrap transition-[opacity,scale] duration-[160ms] ease-out motion-reduce:transition-none",
+            showCan && "scale-90 opacity-0",
+          )}
+        >
+          Hell
+        </span>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -top-1 left-1/2 h-[3px] w-2 -translate-x-1/2 rounded-full border border-current opacity-0 transition-[opacity,transform] duration-200 group-hover/hell:-translate-y-px group-hover/hell:opacity-70 group-focus-visible/hell:-translate-y-px group-focus-visible/hell:opacity-70 motion-safe:group-data-[open=true]/hell:animate-hell-tab-pop"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-1 left-[28%] size-1 rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-1 left-[52%] size-0.5 rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz [animation-delay:70ms]"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-0.5 left-[70%] size-[3px] rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz [animation-delay:130ms]"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute top-[8%] left-[24%] h-[3px] w-0.5 rounded-[50%_50%_60%_60%] bg-[var(--hell-condensation)] opacity-0 shadow-[0_0_2px_var(--hell-condensation-glow)] motion-safe:group-data-[open=true]/hell:animate-hell-drop-a"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute top-[32%] left-[72%] size-0.5 rounded-full bg-[var(--hell-condensation)] opacity-0 shadow-[0_0_2px_var(--hell-condensation-glow)] motion-safe:group-data-[open=true]/hell:animate-hell-drop-b"
-        />
+          className={cn(
+            "pointer-events-none relative col-start-1 row-start-1 grid size-6 scale-75 place-items-center justify-self-start self-center opacity-0 transition-[opacity,scale] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:scale-100 motion-reduce:transition-none",
+            showCan && "scale-100 opacity-100",
+          )}
+        >
+          <Image
+            src={isOpen ? "/icon-can-open.svg" : "/icon-can-closed.svg"}
+            alt=""
+            width={24}
+            height={24}
+            className="size-6 motion-safe:group-data-[open=true]/hell:animate-hell-can-open"
+          />
+          <span className="pointer-events-none absolute -top-1 left-[28%] size-1 rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz" />
+          <span className="pointer-events-none absolute -top-1 left-[52%] size-0.5 rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz [animation-delay:70ms]" />
+          <span className="pointer-events-none absolute -top-0.5 left-[70%] size-[3px] rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz [animation-delay:130ms]" />
+          <span className="pointer-events-none absolute top-[8%] left-[24%] h-[3px] w-0.5 rounded-[50%_50%_60%_60%] bg-[var(--hell-condensation)] opacity-0 shadow-[0_0_2px_var(--hell-condensation-glow)] motion-safe:group-data-[open=true]/hell:animate-hell-drop-a" />
+          <span className="pointer-events-none absolute top-[32%] left-[72%] size-0.5 rounded-full bg-[var(--hell-condensation)] opacity-0 shadow-[0_0_2px_var(--hell-condensation-glow)] motion-safe:group-data-[open=true]/hell:animate-hell-drop-b" />
+        </span>
       </button>
       <audio ref={audioRef} preload="auto" onPlaying={animateOpen}>
         <source src="/audio/can-open.mp3" type="audio/mpeg" />

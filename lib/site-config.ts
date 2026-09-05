@@ -8,6 +8,6 @@ export const siteConfig = {
     x: "https://x.com/too_vinod",
     github: "https://github.com/toovinod",
   },
-  socialImage: "/og-banner.jpeg",
+  socialImage: "/icon.png",
   twitterHandle: "@too_vinod",
 } as const;

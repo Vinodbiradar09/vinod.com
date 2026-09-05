@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeScript } from "@/components/theme-script";
 import { BlueprintMode } from "@/components/ui/blueprint-mode";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -31,8 +30,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: siteConfig.socialImage,
-        width: 1200,
-        height: 630,
+        width: 512,
+        height: 512,
         alt: "Vinod Biradar, Software Engineer",
       },
     ],
@@ -48,10 +47,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <head>
-        <ThemeScript />
-      </head>
+    <html lang="en" className={inter.variable}>
       <body>
         {children}
         <BlueprintMode />

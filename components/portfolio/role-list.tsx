@@ -104,37 +104,18 @@ function DraggableNow() {
 }
 
 function RoleItem({ role }: { role: Role }) {
-  function updateSheen(event: PointerEvent<HTMLAnchorElement>) {
-    if (
-      event.pointerType === "touch" ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
-
-    const logo = event.currentTarget.querySelector<HTMLElement>("[data-role-logo]");
-    if (!logo) return;
-
-    const bounds = logo.getBoundingClientRect();
-    const x = Math.max(0, Math.min(100, ((event.clientX - bounds.left) / bounds.width) * 100));
-    const y = Math.max(0, Math.min(100, ((event.clientY - bounds.top) / bounds.height) * 100));
-    event.currentTarget.style.setProperty("--sheen-x", `${x}%`);
-    event.currentTarget.style.setProperty("--sheen-y", `${y}%`);
-  }
-
   return (
     <PortfolioLink
       href={role.href}
       aria-label={`Visit ${role.company}`}
       data-rerun-item="row"
       data-rerun-delay="4"
-      onPointerMove={updateSheen}
-      className="group/role grid grid-cols-[44px_minmax(0,1fr)] items-center gap-3 py-3.5 opacity-0 motion-safe:animate-row-in motion-reduce:opacity-100 [--sheen-x:50%] [--sheen-y:50%] [animation-delay:230ms]"
+      className="group/role grid grid-cols-[44px_minmax(0,1fr)] items-center gap-3 py-3.5 opacity-0 motion-safe:animate-row-in motion-reduce:opacity-100 [animation-delay:230ms]"
       variant="plain"
     >
       <span
         data-role-logo
-        className="relative grid size-11 place-items-center overflow-hidden rounded-xl border border-rule bg-surface transition-[border-color,box-shadow,scale,translate] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/role:-translate-y-px group-hover/role:scale-[1.015] group-hover/role:border-rule-strong group-hover/role:shadow-[0_6px_18px_rgb(0_0_0/7%)] group-focus-visible/role:-translate-y-px group-focus-visible/role:scale-[1.015] group-focus-visible/role:border-rule-strong group-focus-visible/role:shadow-[0_6px_18px_rgb(0_0_0/7%)] dark:group-hover/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)] dark:group-focus-visible/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)]"
+        className="relative grid size-11 place-items-center overflow-hidden rounded-xl border border-rule bg-surface transition-[border-color,box-shadow,scale,translate] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/role:-translate-y-px group-hover/role:scale-[1.015] group-hover/role:border-rule-strong group-hover/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)] group-focus-visible/role:-translate-y-px group-focus-visible/role:scale-[1.015] group-focus-visible/role:border-rule-strong group-focus-visible/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)]"
       >
         <Image
           src={role.logo}
@@ -144,10 +125,6 @@ function RoleItem({ role }: { role: Role }) {
           sizes="44px"
           loading="eager"
           className="size-full object-cover"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_var(--sheen-x)_var(--sheen-y),rgb(255_255_255/50%),transparent_46%)] opacity-0 mix-blend-screen transition-opacity duration-200 group-hover/role:opacity-100 group-focus-visible/role:opacity-100 motion-reduce:hidden"
         />
       </span>
       <span className="min-w-0">

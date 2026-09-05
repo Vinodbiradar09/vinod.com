@@ -97,7 +97,7 @@ export function InteractiveName({ name }: InteractiveNameProps) {
         viewBox="0 0 100 8"
         preserveAspectRatio="none"
         fill="none"
-        className="pointer-events-none absolute -bottom-1 -left-1 h-2 w-[calc(100%+8px)] overflow-visible text-[#ff2d9a]"
+        className="pointer-events-none absolute -bottom-1 -left-1 h-2 w-[calc(100%+8px)] overflow-visible text-[#ff2d9a] opacity-0 transition-opacity duration-150 group-hover/name:opacity-100 motion-reduce:transition-none"
       >
         <path
           d="M2 5.4C18.5 3.8 32.7 5.9 49.2 4.5C65.8 3.1 81.1 4.1 98 2.7"

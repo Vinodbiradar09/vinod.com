@@ -11,7 +11,12 @@ interface PortfolioSectionProps {
   title: string;
 }
 
-export function PortfolioSection({ children, className, id, title }: PortfolioSectionProps) {
+export function PortfolioSection({
+  children,
+  className,
+  id,
+  title,
+}: PortfolioSectionProps) {
   const headingId = `${id}-heading`;
   const sectionRef = useRef<HTMLElement>(null);
   const [isRevealed, setIsRevealed] = useState(false);
@@ -45,7 +50,7 @@ export function PortfolioSection({ children, className, id, title }: PortfolioSe
     <section
       ref={sectionRef}
       data-blueprint={id}
-      className={cn("mt-14 sm:mt-[68px]", className)}
+      className={cn("mt-14 sm:mt-17", className)}
       aria-labelledby={headingId}
     >
       <div

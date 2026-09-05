@@ -12,7 +12,7 @@ export function QuietMagic() {
         <span
           key={sparkle.className}
           aria-hidden="true"
-          className={`absolute size-[5px] opacity-0 motion-safe:group-hover/magic:animate-magic-spark ${sparkle.className}`}
+          className={`absolute size-1.25 opacity-0 motion-safe:group-hover/magic:animate-magic-spark ${sparkle.className}`}
           style={{ animationDelay: sparkle.delay }}
         >
           <span className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 rounded-full bg-ink shadow-[0_0_7px_currentColor]" />

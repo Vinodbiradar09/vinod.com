@@ -34,7 +34,11 @@ export function EmailContact({ email }: EmailContactProps) {
 
   return (
     <span className="group/email relative inline-flex items-center">
-      <PortfolioLink href={`mailto:${email}`} external={false} variant="editorial">
+      <PortfolioLink
+        href={`mailto:${email}`}
+        external={false}
+        variant="editorial"
+      >
         email
       </PortfolioLink>
       .
@@ -51,11 +55,11 @@ export function EmailContact({ email }: EmailContactProps) {
         type="button"
         onClick={copyEmail}
         data-copied={copied && !isFlying}
-        className="group/copy relative ml-1 inline-grid size-4 cursor-pointer place-items-center rounded-[2px] text-muted opacity-70 transition-[color,opacity,scale,translate] duration-[160ms] ease-out hover:text-ink active:translate-y-px active:scale-[0.92] focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus data-[copied=true]:text-ink data-[copied=true]:opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/email:opacity-100"
+        className="group/copy relative ml-1 inline-grid size-4 cursor-pointer place-items-center rounded-xs text-muted opacity-70 transition-[color,opacity,scale,translate] duration-160 ease-out hover:text-ink active:translate-y-px active:scale-[0.92] focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus data-[copied=true]:text-ink data-[copied=true]:opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/email:opacity-100"
         aria-label={copied ? "Email address copied" : "Copy email address"}
       >
-        <CopyIcon className="absolute size-3 transition-[opacity,scale] duration-[160ms] group-data-[copied=true]/copy:scale-75 group-data-[copied=true]/copy:opacity-0" />
-        <CheckIcon className="absolute size-3 scale-75 opacity-0 transition-[opacity,scale] duration-[160ms] group-data-[copied=true]/copy:scale-100 group-data-[copied=true]/copy:opacity-100" />
+        <CopyIcon className="absolute size-3 transition-[opacity,scale] duration-160 group-data-[copied=true]/copy:scale-75 group-data-[copied=true]/copy:opacity-0" />
+        <CheckIcon className="absolute size-3 scale-75 opacity-0 transition-[opacity,scale] duration-160 group-data-[copied=true]/copy:scale-100 group-data-[copied=true]/copy:opacity-100" />
       </button>
       <span className="sr-only" aria-live="polite">
         {copied ? "Email address copied" : ""}

@@ -146,9 +146,10 @@ export function HellCan() {
       }
 
       if (typingTimer.current) clearTimeout(typingTimer.current);
-      typedKeys.current = `${typedKeys.current}${event.key.toLowerCase()}`.slice(
-        -HELL_SEQUENCE.length,
-      );
+      typedKeys.current =
+        `${typedKeys.current}${event.key.toLowerCase()}`.slice(
+          -HELL_SEQUENCE.length,
+        );
 
       if (typedKeys.current === HELL_SEQUENCE) {
         typedKeys.current = "";
@@ -198,7 +199,8 @@ export function HellCan() {
       if (direction === gesture.lastDirection) {
         gesture.directionTravel += Math.abs(movement);
       } else {
-        if (gesture.lastDirection !== 0 && gesture.directionTravel >= 4) gesture.turns += 1;
+        if (gesture.lastDirection !== 0 && gesture.directionTravel >= 4)
+          gesture.turns += 1;
         gesture.directionTravel = Math.abs(movement);
       }
       gesture.lastDirection = direction;
@@ -257,21 +259,21 @@ export function HellCan() {
           marginInlineEnd: showCan && labelWidth ? 28 - labelWidth : 0,
           translate: `${dragOffset}px 0`,
         }}
-        className="group/hell relative inline-grid w-max touch-pan-y cursor-grab align-baseline text-inherit transition-[color,margin,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] select-none data-[dragging=true]:cursor-grabbing data-[dragging=true]:duration-0 data-[open=true]:text-[#ff3b30] focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus motion-safe:data-[shaken=true]:animate-hell-shake-settle"
+        className="group/hell relative inline-grid w-max touch-pan-y cursor-grab align-baseline text-inherit transition-[color,margin,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] select-none data-[dragging=true]:cursor-grabbing data-[dragging=true]:duration-0 data-[open=true]:text-[#ff3b30] focus-visible:rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus motion-safe:data-[shaken=true]:animate-hell-shake-settle"
       >
         <span
           ref={labelRef}
           className={cn(
-            "col-start-1 row-start-1 w-max justify-self-start whitespace-nowrap transition-[opacity,scale] duration-[160ms] ease-out motion-reduce:transition-none",
+            "col-start-1 row-start-1 w-max justify-self-start whitespace-nowrap transition-[opacity,scale] duration-160 ease-out motion-reduce:transition-none",
             showCan && "scale-90 opacity-0",
           )}
         >
-          Hell
+          HELL
         </span>
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none relative col-start-1 row-start-1 grid size-6 scale-75 place-items-center justify-self-start self-center opacity-0 transition-[opacity,scale] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:scale-100 motion-reduce:transition-none",
+            "pointer-events-none relative col-start-1 row-start-1 grid size-6 scale-75 place-items-center justify-self-start self-center opacity-0 transition-[opacity,scale] duration-180 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:scale-100 motion-reduce:transition-none",
             showCan && "scale-100 opacity-100",
           )}
         >
@@ -284,14 +286,20 @@ export function HellCan() {
           />
           <span className="pointer-events-none absolute -top-1 left-[28%] size-1 rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz" />
           <span className="pointer-events-none absolute -top-1 left-[52%] size-0.5 rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz [animation-delay:70ms]" />
-          <span className="pointer-events-none absolute -top-0.5 left-[70%] size-[3px] rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz [animation-delay:130ms]" />
-          <span className="pointer-events-none absolute top-[8%] left-[24%] h-[3px] w-0.5 rounded-[50%_50%_60%_60%] bg-[var(--hell-condensation)] opacity-0 shadow-[0_0_2px_var(--hell-condensation-glow)] motion-safe:group-data-[open=true]/hell:animate-hell-drop-a" />
-          <span className="pointer-events-none absolute top-[32%] left-[72%] size-0.5 rounded-full bg-[var(--hell-condensation)] opacity-0 shadow-[0_0_2px_var(--hell-condensation-glow)] motion-safe:group-data-[open=true]/hell:animate-hell-drop-b" />
+          <span className="pointer-events-none absolute -top-0.5 left-[70%] size-0.75 rounded-full bg-[#ff3b30] opacity-0 motion-safe:group-data-[open=true]/hell:animate-hell-fizz [animation-delay:130ms]" />
+          <span className="pointer-events-none absolute top-[8%] left-[24%] h-0.75 w-0.5 rounded-[50%_50%_60%_60%] bg-(--hell-condensation) opacity-0 shadow-[0_0_2px_var(--hell-condensation-glow)] motion-safe:group-data-[open=true]/hell:animate-hell-drop-a" />
+          <span className="pointer-events-none absolute top-[32%] left-[72%] size-0.5 rounded-full bg-(--hell-condensation opacity-0 shadow-[0_0_2px_var(--hell-condensation-glow)] motion-safe:group-data-[open=true]/hell:animate-hell-drop-b" />
         </span>
       </button>
       <audio ref={audioRef} preload="auto" onPlaying={animateOpen}>
         <source src="/audio/can-open.mp3" type="audio/mpeg" />
-        <track kind="captions" src="/audio/can-open.en.vtt" srcLang="en" label="English" default />
+        <track
+          kind="captions"
+          src="/audio/can-open.en.vtt"
+          srcLang="en"
+          label="English"
+          default
+        />
       </audio>
     </>
   );

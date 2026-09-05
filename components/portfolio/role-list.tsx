@@ -36,8 +36,14 @@ function DraggableNow() {
 
     event.preventDefault();
     event.stopPropagation();
-    const x = Math.max(-DRAG_LIMIT, Math.min(DRAG_LIMIT, event.clientX - dragStart.current.x));
-    const y = Math.max(-DRAG_LIMIT, Math.min(DRAG_LIMIT, event.clientY - dragStart.current.y));
+    const x = Math.max(
+      -DRAG_LIMIT,
+      Math.min(DRAG_LIMIT, event.clientX - dragStart.current.x),
+    );
+    const y = Math.max(
+      -DRAG_LIMIT,
+      Math.min(DRAG_LIMIT, event.clientY - dragStart.current.y),
+    );
     event.currentTarget.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${x * 0.35}deg)`;
   }
 
@@ -51,7 +57,8 @@ function DraggableNow() {
     const annotation = annotationRef.current;
     if (!annotation) return;
 
-    annotation.style.transition = "transform 420ms cubic-bezier(0.16, 1, 0.3, 1)";
+    annotation.style.transition =
+      "transform 420ms cubic-bezier(0.16, 1, 0.3, 1)";
     annotation.style.transform = "";
     snapTimer.current = setTimeout(() => {
       annotation.style.removeProperty("transition");
@@ -79,7 +86,7 @@ function DraggableNow() {
         aria-hidden="true"
         viewBox="0 0 32 18"
         fill="none"
-        className="pointer-events-none absolute h-[22px] w-[38px] overflow-visible"
+        className="pointer-events-none absolute h-5.5 w-9.5 overflow-visible"
       >
         <path
           d="M2.4 9.7C3.2 3.1 10.6.7 18.3 1.5c7.6.8 12.5 3.4 11.4 8.3-1.2 5.1-8.3 7.2-15.7 6.5C6.6 15.6 1.8 13.4 2.4 9.7Z"
@@ -115,7 +122,7 @@ function RoleItem({ role }: { role: Role }) {
     >
       <span
         data-role-logo
-        className="relative grid size-11 place-items-center overflow-hidden rounded-xl border border-rule bg-surface transition-[border-color,box-shadow,scale,translate] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/role:-translate-y-px group-hover/role:scale-[1.015] group-hover/role:border-rule-strong group-hover/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)] group-focus-visible/role:-translate-y-px group-focus-visible/role:scale-[1.015] group-focus-visible/role:border-rule-strong group-focus-visible/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)]"
+        className="relative grid size-11 place-items-center overflow-hidden rounded-xl border border-rule bg-surface transition-[border-color,box-shadow,scale,translate] duration-180 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/role:-translate-y-px group-hover/role:scale-[1.015] group-hover/role:border-rule-strong group-hover/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)] group-focus-visible/role:-translate-y-px group-focus-visible/role:scale-[1.015] group-focus-visible/role:border-rule-strong group-focus-visible/role:shadow-[0_0_0_1px_rgb(255_255_255/3%)]"
       >
         <Image
           src={role.logo}
@@ -132,7 +139,9 @@ function RoleItem({ role }: { role: Role }) {
           <span className="font-medium text-ink">{role.company}</span>
           <DraggableNow />
         </span>
-        <span className="block text-[13px] leading-[18px] text-muted">{role.role}</span>
+        <span className="block text-[13px] leading-4.5 text-muted">
+          {role.role}
+        </span>
       </span>
     </PortfolioLink>
   );

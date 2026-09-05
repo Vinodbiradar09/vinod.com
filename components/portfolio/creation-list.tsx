@@ -17,7 +17,7 @@ function NpmDownloadBadge({ downloads }: { downloads: number }) {
         viewBox="0 0 32 18"
         fill="none"
         preserveAspectRatio="none"
-        className="absolute h-[22px] w-[calc(100%+8px)] overflow-visible"
+        className="absolute h-5.5 w-[calc(100%+8px)] overflow-visible"
       >
         <path
           d="M2.4 9.7C3.2 3.1 10.6.7 18.3 1.5c7.6.8 12.5 3.4 11.4 8.3-1.2 5.1-8.3 7.2-15.7 6.5C6.6 15.6 1.8 13.4 2.4 9.7Z"
@@ -54,7 +54,7 @@ function CreationItem({
     <article
       data-rerun-item="row"
       data-rerun-delay={index + 5}
-      className="group/creation relative isolate grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-0.5 border-b border-rule py-3.5 opacity-0 transition-[opacity,transform] duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:animate-row-in motion-reduce:opacity-100 last:border-b-0 hover:translate-x-0.5 focus-within:translate-x-0.5 [&:has(a:active)]:translate-x-0.5 [&:has(a:active)]:opacity-75 sm:grid-cols-[108px_minmax(0,1fr)_auto] sm:items-center sm:gap-5 sm:py-[13px]"
+      className="group/creation relative isolate grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-0.5 border-b border-rule py-3.5 opacity-0 transition-[opacity,transform] duration-180 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:animate-row-in motion-reduce:opacity-100 last:border-b-0 hover:translate-x-0.5 focus-within:translate-x-0.5 [&:has(a:active)]:translate-x-0.5 [&:has(a:active)]:opacity-75 sm:grid-cols-[108px_minmax(0,1fr)_auto] sm:items-center sm:gap-5 sm:py-3.25"
       style={{ animationDelay: `${290 + index * 40}ms` }}
     >
       <div className="relative z-10 w-fit min-w-0">
@@ -68,7 +68,7 @@ function CreationItem({
         </PortfolioLink>
       </div>
       <p className="relative z-10 col-span-2 row-start-2 text-[13px] text-muted sm:col-span-1 sm:row-start-auto sm:whitespace-nowrap">
-        <span className="transition-colors duration-[180ms] group-hover/creation:text-ink group-focus-within/creation:text-ink">
+        <span className="transition-colors duration-180 group-hover/creation:text-ink group-focus-within/creation:text-ink">
           {creation.description}
         </span>
       </p>
@@ -90,7 +90,9 @@ function CreationItem({
             }
           >
             {link.label}
-            {link.label === "npm" ? <NpmDownloadBadge downloads={npmDownloads} /> : null}
+            {link.label === "npm" ? (
+              <NpmDownloadBadge downloads={npmDownloads} />
+            ) : null}
           </PortfolioLink>
         ))}
       </div>

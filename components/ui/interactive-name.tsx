@@ -21,19 +21,24 @@ export function InteractiveName({ name }: InteractiveNameProps) {
 
   useEffect(
     () => () => {
-      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
+      if (frameRef.current !== null)
+        window.cancelAnimationFrame(frameRef.current);
     },
     [],
   );
 
   function renderWeight() {
-    const boundsByLetter = letterRefs.current.map((letter) => letter?.getBoundingClientRect());
+    const boundsByLetter = letterRefs.current.map((letter) =>
+      letter?.getBoundingClientRect(),
+    );
 
     for (const [index, letter] of letterRefs.current.entries()) {
       const bounds = boundsByLetter[index];
       if (!letter || !bounds) continue;
 
-      const distance = Math.abs(pointerX.current - (bounds.left + bounds.width / 2));
+      const distance = Math.abs(
+        pointerX.current - (bounds.left + bounds.width / 2),
+      );
       const influence = Math.max(0, 1 - distance / INFLUENCE_RADIUS);
 
       letter.style.fontWeight = `${RESTING_WEIGHT + influence * (ACTIVE_WEIGHT - RESTING_WEIGHT)}`;
@@ -52,11 +57,13 @@ export function InteractiveName({ name }: InteractiveNameProps) {
     }
 
     pointerX.current = event.clientX;
-    if (frameRef.current === null) frameRef.current = window.requestAnimationFrame(renderWeight);
+    if (frameRef.current === null)
+      frameRef.current = window.requestAnimationFrame(renderWeight);
   }
 
   function resetLetters() {
-    if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
+    if (frameRef.current !== null)
+      window.cancelAnimationFrame(frameRef.current);
     frameRef.current = null;
 
     for (const letter of letterRefs.current) {
@@ -79,12 +86,12 @@ export function InteractiveName({ name }: InteractiveNameProps) {
 
           return (
             <span key={id} className="relative inline-block">
-              <span className="invisible font-[500]">{displayCharacter}</span>
+              <span className="invisible font-medium">{displayCharacter}</span>
               <span
                 ref={(element) => {
                   letterRefs.current[index] = element;
                 }}
-                className="absolute inset-0 inline-block font-[500] transition-[font-weight,transform] duration-[260ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transform-none"
+                className="absolute inset-0 inline-block font-medium transition-[font-weight,transform] duration-260 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transform-none"
               >
                 {displayCharacter}
               </span>

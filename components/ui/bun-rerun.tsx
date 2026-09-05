@@ -1,6 +1,12 @@
 "use client";
 
-import { type KeyboardEvent, type MouseEvent, useEffect, useRef, useState } from "react";
+import {
+  type KeyboardEvent,
+  type MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 const RERUN_EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
 type RerunType = "rise" | "row" | "section";
@@ -73,7 +79,7 @@ export function BunRerun() {
       aria-label="Bun, double-click to rerun the page animations"
       onDoubleClick={doubleClick}
       onKeyDown={rerunWithKeyboard}
-      className="relative inline-block touch-manipulation cursor-pointer rounded-[2px] text-inherit select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+      className="relative inline-block touch-manipulation cursor-pointer rounded-xs text-inherit select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
     >
       Bun
       {runId > 0 ? (

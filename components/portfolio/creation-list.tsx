@@ -1,7 +1,55 @@
 import { PortfolioLink } from "@/components/ui/portfolio-link";
+import { getCosrxTotalDownloads } from "@/lib/npm-downloads";
 import { type Creation, creations } from "@/lib/portfolio-data";
 
-function CreationItem({ creation, index }: { creation: Creation; index: number }) {
+function NpmDownloadBadge({ downloads }: { downloads: number }) {
+  const label = downloads.toLocaleString("en-US");
+
+  return (
+    <span
+      aria-hidden="true"
+      title={`${label} total downloads`}
+      className="pointer-events-none absolute top-1/2 left-[calc(100%+7px)] inline-grid min-w-6 -translate-y-1/2 -rotate-3 scale-90 place-items-center px-1 font-mono text-[9px] leading-none font-medium whitespace-nowrap text-[#ff2d9a] opacity-0 transition-[opacity,scale,rotate] duration-200 ease-out group-hover/npm:rotate-0 group-hover/npm:scale-100 group-hover/npm:opacity-100 group-focus-visible/npm:rotate-0 group-focus-visible/npm:scale-100 group-focus-visible/npm:opacity-100 motion-reduce:transition-none"
+    >
+      {label}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 32 18"
+        fill="none"
+        preserveAspectRatio="none"
+        className="absolute h-[22px] w-[calc(100%+8px)] overflow-visible"
+      >
+        <path
+          d="M2.4 9.7C3.2 3.1 10.6.7 18.3 1.5c7.6.8 12.5 3.4 11.4 8.3-1.2 5.1-8.3 7.2-15.7 6.5C6.6 15.6 1.8 13.4 2.4 9.7Z"
+          pathLength="1"
+          stroke="currentColor"
+          strokeWidth="1.25"
+          strokeLinecap="round"
+          className="[stroke-dasharray:1] [stroke-dashoffset:1] transition-[stroke-dashoffset] delay-75 duration-500 ease-out group-hover/npm:[stroke-dashoffset:0] group-focus-visible/npm:[stroke-dashoffset:0] motion-reduce:transition-none"
+        />
+        <path
+          d="M1.2 8.2C2.8 3.4 9.4 1 17 1.2c8.1.3 13.9 3.2 13.7 7.7-.2 4.8-6.7 7.7-14.7 7.6C7.8 16.4 1.3 13.4 1.2 8.2Z"
+          pathLength="1"
+          stroke="currentColor"
+          strokeWidth="0.75"
+          strokeLinecap="round"
+          opacity="0.72"
+          className="[stroke-dasharray:1] [stroke-dashoffset:1] transition-[stroke-dashoffset] delay-150 duration-500 ease-out group-hover/npm:[stroke-dashoffset:0] group-focus-visible/npm:[stroke-dashoffset:0] motion-reduce:transition-none"
+        />
+      </svg>
+    </span>
+  );
+}
+
+function CreationItem({
+  creation,
+  index,
+  npmDownloads,
+}: {
+  creation: Creation;
+  index: number;
+  npmDownloads: number;
+}) {
   return (
     <article
       data-rerun-item="row"
@@ -30,9 +78,19 @@ function CreationItem({ creation, index }: { creation: Creation; index: number }
             key={link.label}
             href={link.href}
             variant="muted"
-            className="group-hover/creation:text-ink group-focus-within/creation:text-ink"
+            aria-label={
+              link.label === "npm"
+                ? `Open ${creation.name} on npm, ${npmDownloads.toLocaleString("en-US")} total downloads`
+                : undefined
+            }
+            className={
+              link.label === "npm"
+                ? "group/npm relative overflow-visible group-hover/creation:text-ink group-focus-within/creation:text-ink"
+                : "group-hover/creation:text-ink group-focus-within/creation:text-ink"
+            }
           >
             {link.label}
+            {link.label === "npm" ? <NpmDownloadBadge downloads={npmDownloads} /> : null}
           </PortfolioLink>
         ))}
       </div>
@@ -40,11 +98,18 @@ function CreationItem({ creation, index }: { creation: Creation; index: number }
   );
 }
 
-export function CreationList() {
+export async function CreationList() {
+  const npmDownloads = await getCosrxTotalDownloads();
+
   return (
     <div className="border-b border-rule [@media(hover:hover)]:[&:hover>article:not(:hover)]:opacity-60 [&:has(article:focus-within)>article:not(:focus-within)]:opacity-60">
       {creations.map((creation, index) => (
-        <CreationItem key={creation.name} creation={creation} index={index} />
+        <CreationItem
+          key={creation.name}
+          creation={creation}
+          index={index}
+          npmDownloads={npmDownloads}
+        />
       ))}
     </div>
   );
